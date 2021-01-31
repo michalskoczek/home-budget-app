@@ -13,4 +13,8 @@ router.get('/login', (req, res) => {
   res.send('login');
 });
 
+router.get('/login/user', (req, res) => {
+  res.send('user account');
+});
+
 module.exports = router;
