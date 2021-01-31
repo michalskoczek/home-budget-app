@@ -12,8 +12,4 @@ const app = express();
 
 app.use('/', mainRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello Michał');
-});
-
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
