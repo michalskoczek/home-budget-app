@@ -1,13 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../model/User');
-
-const schema = Joi.object({
-  name: Joi.string().min(3).max(255).required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(8).max(1024).required(),
-  confirmPassword: Joi.ref('password'),
-});
+const { registerValidation } = require('../validation');
 
 router.post('/', async (req, res) => {
   const validation = schema.validate(req.body);
