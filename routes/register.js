@@ -4,8 +4,11 @@ const User = require('../model/User');
 const { registerValidation } = require('../validation');
 
 router.post('/', async (req, res) => {
-  const validation = schema.validate(req.body);
-  res.send(validation);
+  const { error } = registerValidation(req.body);
+  if (error) {
+    res.status(400).send(error.details[0].message);
+    return;
+  }
 
   /* const user = new User({
     name: req.body.name,
