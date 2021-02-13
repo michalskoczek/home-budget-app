@@ -5,10 +5,10 @@ const { registerValidation } = require('../validation');
 
 router.post('/', async (req, res) => {
   const { error } = registerValidation(req.body);
-  if (error) {
-    res.status(400).send(error.details[0].message);
-    return;
-  }
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const existEmail = await User.findOne({ email: req.body.email });
+  if (existEmail) return res.status(400).send('Email exists');
 
   const user = new User({
     name: req.body.name,
