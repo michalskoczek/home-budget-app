@@ -1,9 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
-const postRouter = require('./routes/authenticate');
+const postRoute = require('./routes/posts');
 
 dotenv.config({ path: './config/.env' });
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,6 @@ app.use(express.json());
 
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
-app.use('/posts', postRouter);
+app.use('/posts', postRoute);
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
