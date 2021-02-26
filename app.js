@@ -7,6 +7,8 @@ const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
 const postRoute = require('./routes/posts');
 
+const budgetRouter = require('./routes/budget');
+
 dotenv.config({ path: './config/.env' });
 const PORT = process.env.PORT || 3000;
 
