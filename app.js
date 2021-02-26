@@ -24,4 +24,8 @@ app.use('/', homepageRouter);
 app.use('/register', registerRouter);
 app.use('/posts', postRoute);
 
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'views', 'error-page.html'));
+});
+
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
