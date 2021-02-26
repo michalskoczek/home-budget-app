@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 1440px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  background-color: #a0ffa5;
+}
+
+.main-header__title {
+  height: 34px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.main-header__item-list {
+  display: flex;
+  list-style: none;
+}
