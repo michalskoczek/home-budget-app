@@ -4,25 +4,62 @@
   box-sizing: border-box;
 }
 
-body {
-  max-width: 1440px;
-}
-
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-  width: 100%;
+.header {
   background-color: #a0ffa5;
 }
 
-.main-header__title {
-  height: 34px;
+.header__title {
+  margin-top: 0.5rem;
+  font: 400 20px 'Montserrat', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
 }
 
-.main-header__item-list {
+@media (min-width: 768px) {
+  .header__title {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__title {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__title {
+    font-size: 34px;
+  }
+}
+
+/* .main-header__item-list {
   display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  margin: 0;
+} */
+
+/* .main-header__item {
   list-style: none;
+  padding: 0 15px;
+} */
+
+/* // Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... } */
+
+.bgc {
+  background-color: yellow;
+}
+
+.bgcc {
+  background-color: red;
 }
