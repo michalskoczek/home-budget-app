@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 
-.header {
-  background-color: #a0ffa5;
+@media (min-width: 1400px) {
+  body {
+    max-width: 1400px !important;
+  }
 }
 
 .header__title {
@@ -32,34 +34,113 @@
   }
 }
 
-/* .main-header__item-list {
-  display: flex;
-  justify-content: flex-end;
-  height: 100%;
-  margin: 0;
-} */
-
-/* .main-header__item {
-  list-style: none;
-  padding: 0 15px;
-} */
-
-/* // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) { ... }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) { ... } */
-
-.bgc {
-  background-color: yellow;
+.header__nav {
+  margin: auto 0;
 }
 
-.bgcc {
-  background-color: red;
+@media (max-width: 991.99px) {
+  .header__nav {
+    display: none;
+  }
+}
+
+.header__item-list {
+  margin: 0;
+}
+
+.header__btn {
+  font: 400 16px 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.header__btn--login {
+  margin-left: 15px;
+}
+
+.main__title-container {
+  margin-top: 50px;
+  font: 700 26px 'Montserrat', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .main__title-container {
+    margin-left: -25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .main__title-container {
+    margin: 75px 0 0 -25%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .main__title-container {
+    margin: 75px 0 0 -20%;
+  }
+}
+
+.flickity-carousel {
+  margin: 15px 0;
+}
+
+@media (min-width: 992px) {
+  .flickity-carousel {
+    margin: 30px 0;
+  }
+}
+
+.carousel-cell {
+  background-color: #ddd;
+  width: 150px;
+  height: 230px;
+  margin-right: 15px;
+  border-radius: 25px;
+}
+
+@media (min-width: 768px) {
+  .carousel-cell {
+    background-color: #ddd;
+    width: 190px;
+    height: 230px;
+    margin-right: 25px;
+    border-radius: 25px;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel-cell {
+    background-color: #ddd;
+    width: 500px;
+    height: 320px;
+    margin-right: 25px;
+    border-radius: 25px;
+  }
+}
+
+.register-login__container {
+  margin: 40px 0;
+  height: 180px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  .register-login__container {
+    display: none;
+  }
+}
+
+.register-login__title {
+  font: 400 20px 'Montserrat', sans-serif;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.register-login__button {
+  font: 400 18px 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+  width: 120px;
+  height: 50px;
+  margin: 0 10px;
 }
