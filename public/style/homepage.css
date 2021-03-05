@@ -1,39 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@media (min-width: 1400px) {
-  body {
-    max-width: 1400px !important;
-  }
-}
-
-.header__title {
-  margin-top: 0.5rem;
-  font: 400 20px 'Montserrat', sans-serif;
-  text-transform: uppercase;
-}
-
-@media (min-width: 768px) {
-  .header__title {
-    font-size: 24px;
-  }
-}
-
-@media (min-width: 992px) {
-  .header__title {
-    font-size: 28px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .header__title {
-    font-size: 34px;
-  }
-}
-
 .header__nav {
   margin: auto 0;
 }
@@ -55,29 +19,6 @@
 
 .header__btn--login {
   margin-left: 15px;
-}
-
-.main__title-container {
-  margin-top: 50px;
-  font: 700 26px 'Montserrat', sans-serif;
-}
-
-@media (min-width: 768px) {
-  .main__title-container {
-    margin-left: -25%;
-  }
-}
-
-@media (min-width: 992px) {
-  .main__title-container {
-    margin: 75px 0 0 -25%;
-  }
-}
-
-@media (min-width: 1400px) {
-  .main__title-container {
-    margin: 75px 0 0 -20%;
-  }
 }
 
 .flickity-carousel {
