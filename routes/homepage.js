@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'views', 'homepage.html'));
+  res.render('homepage', {pageTitle: 'Home Budget App'})
 });
 
 module.exports = router;
