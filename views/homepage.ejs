@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=`, initial-scale=1.0" />
-    <title>Home Budget App</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+<%- include('includes/head.ejs') %>
     <link rel="stylesheet" href="/flickity.css" media="screen" />
-    <link rel="stylesheet" href="/style/common-parts.css" />
     <link rel="stylesheet" href="/style/homepage.css" />
-  </head>
-  <body class="container">
-    <header class="row">
-      <div class="col">
-        <h1 class="header__title">home budget app</h1>
-      </div>
+  <%- include('includes/nav.ejs') %>
       <nav class="header__nav col-lg-auto">
         <ul class="header__item-list">
           <li class="list-inline-item">
@@ -70,9 +52,7 @@
         Log in
       </button>
     </div>
-    <script src="/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+<%- include('includes/scripts.ejs') %>
     <script src="/flickity.pkgd.min.js"></script>
     <script src="/js/flickity.js"></script>
-  </body>
-</html>
+<%- include('includes/end.ejs') %>
