@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
 const postRoute = require('./routes/posts');
+const loginRouter = require('./routes/login');
 
 const budgetRouter = require('./routes/budget');
 
@@ -29,10 +30,13 @@ app.use('/budget', budgetRouter);
 
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 app.use('/posts', postRoute);
 
 app.use((req, res) => {
-  res.status(404).render('error-page', { errorPageTitle: 'Error | Home Budget App' });
+  res
+    .status(404)
+    .render('error-page', { errorPageTitle: 'Error | Home Budget App' });
 });
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
