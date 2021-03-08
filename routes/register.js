@@ -5,6 +5,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/User');
 const { registerValidation, loginValidation } = require('../validation');
 
+router.get('/', (req, res) => {
+  res.render('register', {pageTitle: 'Home Budget App'})
+})
+
 router.post('/', async (req, res) => {
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);

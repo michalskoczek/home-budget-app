@@ -62,7 +62,7 @@
 .register-login__container {
   margin: 40px 0;
   height: 180px;
-  border: 1px solid black;
+  border: 1px solid #888;
   border-radius: 10px;
 }
 
