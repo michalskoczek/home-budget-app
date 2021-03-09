@@ -34,3 +34,14 @@ label {
   top: 88%;
   transform: translateX(-50%);
 }
+
+.form__smallText--register {
+  top: 90%;
+}
+
+.form__smallText--signin {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
