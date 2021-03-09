@@ -1,0 +1,54 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/style/register.css" />
+   <%- include('includes/nav.ejs') %>
+    </header>
+    <main class="main-container row justify-content-center">
+      <div class="form-container col col-lg-6">
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              name="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              class="form__input form-control"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form__input form-control"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Confirm password</label>
+            <input
+              type="password"
+              class="form__input form-control"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" class="form__signin-btn btn btn-success">
+            Register
+          </button>
+          <small class="form__smallText form-text text-muted"
+            >Have you got an account?<a class="form__smallText--signin" href="/login">Sign in</a></small
+          >
+        </form>
+      </div>
+    </main>
+<%- include('includes/scripts.ejs') %>
+<%- include('includes/end.ejs') %>
