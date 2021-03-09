@@ -8,6 +8,8 @@ const registerRouter = require('./routes/register');
 const postRoute = require('./routes/posts');
 const loginRouter = require('./routes/login');
 
+const errorController = require('./controllers/error');
+
 const budgetRouter = require('./routes/budget');
 
 dotenv.config({ path: './config/.env' });
@@ -33,10 +35,6 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/posts', postRoute);
 
-app.use((req, res) => {
-  res
-    .status(404)
-    .render('error-page', { errorPageTitle: 'Error | Home Budget App' });
-});
+app.use(errorController.getErrorPage);
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
