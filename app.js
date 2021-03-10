@@ -5,12 +5,10 @@ const connectDB = require('./config/db');
 
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
-const postRoute = require('./routes/posts');
 const loginRouter = require('./routes/login');
+const budgetExpenseRouter = require('./routes/user/budget-expense');
 
 const errorController = require('./controllers/error');
-
-const budgetRouter = require('./routes/budget');
 
 dotenv.config({ path: './config/.env' });
 const PORT = process.env.PORT || 3000;
@@ -28,12 +26,10 @@ app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, '/node_modules/flickity/dist')));
 
-app.use('/budget', budgetRouter);
-
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/posts', postRoute);
+app.use('/user/budget', budgetExpenseRouter);
 
 app.use(errorController.getErrorPage);
 
