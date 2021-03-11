@@ -32,3 +32,20 @@ label {
   right: 8%;
   margin: 20px 0 0;
 }
+
+.information {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.information__icon {
+  font-size: 30px;
+}
+
+.information__title,
+.information__amount {
+  text-align: center;
+  font: 400 18px 'Montserrat', sans-serif;
+}
