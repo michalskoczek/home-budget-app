@@ -51,12 +51,34 @@
               required
             />
           </div>
-          <button type="submit" class="form__add-expense-btn btn btn-danger">
+          <button class="form__add-expense-btn btn btn-danger">
             Add expense
           </button>
         </form>
       </div>
     </div>
 </main>
+
+<% if(budget) { %>
+  <section class="information container">
+    <div class="row">
+      <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
+      <ion-icon class="information__icon text-danger col" name="basket"></ion-icon>
+      <ion-icon class="information__icon text-primary col" name="wallet"></ion-icon>
+    </div>
+    <div class="row">
+      <p class="information__title col">Budget</p>
+      <p class="information__title col">Expense</p>
+      <p class="information__title col">Balance</p>
+    </div>
+    <div class="row">
+      <span class="information__amount information__amount--budget col">---</span>
+      <span class="information__amount information__amount--expense col">---</span>       
+      <span class="information__amount information__amount--balance col">---</span>
+    </div>
+  </section>
+<% } %>
+<div class="table"></div>
 <%- include('../includes/scripts.ejs') %>
+<script src="/js/budget-expense.js"></script>
 <%- include('../includes/end.ejs') %>
