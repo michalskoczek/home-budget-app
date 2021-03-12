@@ -36,32 +36,33 @@ addExpenseBtn.addEventListener('click', (e) => {
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
 
-  console.log(expenseDB);
-
   if (number === 1) {
-    const expenseHtml = `<table class="table">
+    const expenseHtml = `<table class="table table-striped">
   <tbody>
     <tr>
       <th scope="row">${number}</th>
       <td>${expenseDB[0].title}</td>
       <td>${expenseDB[0].amount}</td>
-      <td><ion-icon name="create"></ion-icon></td>
-      <td><ion-icon name="trash"></ion-icon></td>
+      <td class="table__buttons">
+      <button><ion-icon class="table__icon text-success" name="create"></ion-icon></button>
+			<button><ion-icon class="table__icon text-danger" name="trash"></ion-icon></button>
+      </td>
     </tr>
   </tbody>
 </table>`;
 
     document.querySelector('.table').innerHTML = expenseHtml;
   } else if (number > 1) {
-    const tableTr = document.querySelector('.table tr');
-    for (let i = 1; i < expenseDB.length; i++) {
-      const expenseHtml = `<th scope="row">${number}</th>
-      <td>${expenseDB[i].title}</td>
-      <td>${expenseDB[i].amount}</td>
-      <td><ion-icon name="create"></ion-icon></td>
-      <td><ion-icon name="trash"></ion-icon></td>`;
-
-      tableTr.appendChild(expenseHtml);
-    }
+    const tableTbody = document.querySelector('.table tbody');
+    const tr = document.createElement('tr');
+    const expenseHtml = `<th scope="row">${number}</th>
+      <td>${expenseDB[expenseDB.length - 1].title}</td>
+      <td>${expenseDB[expenseDB.length - 1].amount}</td>
+      <td class="table__buttons">
+      <button><ion-icon class="table__icon text-success" name="create"></ion-icon></button>
+			<button><ion-icon class="table__icon text-danger" name="trash"></ion-icon></button>
+      </td>`;
+    tr.innerHTML = expenseHtml;
+    tableTbody.appendChild(tr);
   }
 });
