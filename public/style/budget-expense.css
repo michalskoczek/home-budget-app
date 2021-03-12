@@ -22,22 +22,47 @@ label {
   margin: 0 0 0;
 }
 
+@media (min-width: 992px) {
+  .form__container {
+    margin: 15px 0 0;
+  }
+}
+
 .form__input {
   border-radius: 11px;
 }
 
 .form__update-budget-btn,
 .form__add-expense-btn {
-  position: absolute;
-  right: 8%;
   margin: 20px 0 0;
+  position: relative;
+  left: 95%;
+  transform: translateX(-100%);
+}
+
+@media (min-width: 992px) {
+  .form__update-budget-btn,
+  .form__add-expense-btn {
+    width: 134px;
+  }
+}
+
+@media (min-width: 992px) {
+  #expenses,
+  #budget {
+    display: block;
+    opacity: 1;
+  }
 }
 
 .information {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 20px 0 0;
+}
+
+@media (min-width: 992px) {
+  .information {
+    margin: 35px 0 0;
+  }
 }
 
 .information__icon {
@@ -48,4 +73,29 @@ label {
 .information__amount {
   text-align: center;
   font: 400 18px 'Montserrat', sans-serif;
+}
+
+.table {
+  margin: 15px 0 0;
+}
+
+@media (min-width: 992px) {
+  .table {
+    margin: 0;
+  }
+}
+
+.table__icon {
+  font-size: 20px;
+}
+
+.table button {
+  border: none;
+  background: none;
+  padding: 0 15px;
+}
+
+.table__buttons {
+  text-align: right;
+  width: 130px;
 }
