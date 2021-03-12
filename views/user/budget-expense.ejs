@@ -4,7 +4,8 @@
    <%- include('../includes/nav.ejs') %>
     </header>
 <main>
-    <ul class="nav__item-list nav nav-tabs" id="myTab" role="tablist">
+
+    <ul class="d-lg-none nav__item-list nav nav-tabs" id="myTab" role="tablist">
       <li class="nav__item nav-item" role="presentation">
         <a class="nav__item-link nav-link active" id="budget-tab" data-toggle="tab" href="#budget" role="tab" aria-controls="budget" aria-selected="true">Budget</a>
       </li>
@@ -12,9 +13,9 @@
         <a class="nav__item-link nav-link" id="expenses-tab" data-toggle="tab" href="#expenses" role="tab" aria-controls="expenses" aria-selected="false">Expenses</a>
       </li>
     </ul>
-
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="budget" role="tabpanel" aria-labelledby="budget-tab">
+<div class="container-lg">
+    <div class="tab-content row" id="myTabContent">
+      <div class="tab-pane fade show active col-lg-6" id="budget" role="tabpanel" aria-labelledby="budget-tab">
         <form>
           <div class="form__container form-group">
             <label for="budget">Enter your budget</label>
@@ -31,7 +32,9 @@
         </form>
       </div>
 
-      <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+      
+      
+      <div class="tab-pane fade col-lg-6 order-lg-8" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
         <form>
           <div class="form__container form-group">
             <label for="title">Enter title your expense</label>
@@ -56,29 +59,34 @@
           </button>
         </form>
       </div>
+      <% if(budget) { %>
+    <section class="information container col-lg-6 order-lg-6">
+      <div class="row">
+        <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
+        <ion-icon class="information__icon text-danger col" name="basket"></ion-icon>
+        <ion-icon class="information__icon text-primary col" name="wallet"></ion-icon>
+      </div>
+      <div class="row">
+        <p class="information__title col">Budget</p>
+        <p class="information__title col">Expense</p>
+        <p class="information__title col">Balance</p>
+      </div>
+      <div class="row">
+        <span class="information__amount information__amount--budget col">---</span>
+        <span class="information__amount information__amount--expense col">---</span>       
+        <span class="information__amount information__amount--balance col">---</span>
+      </div>
+    </section>
+    <div class="table col-lg-6 order-lg-12"></div>
+  <% } %>
     </div>
+
+  
+</div>
 </main>
 
-<% if(budget) { %>
-  <section class="information container">
-    <div class="row">
-      <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
-      <ion-icon class="information__icon text-danger col" name="basket"></ion-icon>
-      <ion-icon class="information__icon text-primary col" name="wallet"></ion-icon>
-    </div>
-    <div class="row">
-      <p class="information__title col">Budget</p>
-      <p class="information__title col">Expense</p>
-      <p class="information__title col">Balance</p>
-    </div>
-    <div class="row">
-      <span class="information__amount information__amount--budget col">---</span>
-      <span class="information__amount information__amount--expense col">---</span>       
-      <span class="information__amount information__amount--balance col">---</span>
-    </div>
-  </section>
-<% } %>
-<div class="table"></div>
+
+
 <%- include('../includes/scripts.ejs') %>
 <script src="/js/budget-expense.js"></script>
 <%- include('../includes/end.ejs') %>
