@@ -8,4 +8,10 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  const userId = req.params.id;
+  console.log(userId);
+  res.redirect('/');
+});
+
 module.exports = router;
