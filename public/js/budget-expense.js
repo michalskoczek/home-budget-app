@@ -2,18 +2,27 @@ const updateBtn = document.querySelector('.form__update-budget-btn');
 const budgetInfoSpan = document.querySelector('.information__amount--budget');
 const budgetInput = document.querySelector('input[name="budget"]');
 
+const expenseInfoSpan = document.querySelector('.information__amount--expense');
+
+const balanceInfoSpan = document.querySelector('.information__amount--balance');
+
 updateBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const budgetAmount = budgetInput.value;
-  if (budgetAmount > 0 && budgetAmount !== NaN) {
-    budgetInfoSpan.innerText = budgetAmount;
-  }
-  budgetInput.value = '';
+  // const budgetAmount = budgetInput.value;
+  // if (budgetAmount > 0 && budgetAmount !== NaN) {
+  //   budgetInfoSpan.innerText = budgetAmount;
+  // }
+  // budgetInput.value = '';
+  const budget = new Budget();
+
+  budget.isValueCorrect(Number(budgetInput.value));
+  budget.updateBudget(budgetInfoSpan);
+  budget.checkBalance(expenseInfoSpan, balanceInfoSpan);
 });
 
 const addExpenseBtn = document.querySelector('.form__add-expense-btn');
-const expenseInfoSpan = document.querySelector('.information__amount--expense');
+
 const expenseTitleInput = document.querySelector('input[name="title"]');
 const expenseAmountInput = document.querySelector('input[name="amount"]');
 let number = 0;
