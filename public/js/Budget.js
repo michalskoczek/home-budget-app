@@ -9,9 +9,12 @@ class Budget {
       !isNaN(value) &&
       value >= 1 &&
       value !== '0' &&
-      value !== '-0'
+      value !== '-0' &&
+      value !== ''
     ) {
       this.budgetAmounts.push(value);
+    } else {
+      return;
     }
   }
 
