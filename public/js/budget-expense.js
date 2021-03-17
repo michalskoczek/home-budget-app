@@ -9,69 +9,41 @@ const balanceInfoSpan = document.querySelector('.information__amount--balance');
 updateBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  // const budgetAmount = budgetInput.value;
-  // if (budgetAmount > 0 && budgetAmount !== NaN) {
-  //   budgetInfoSpan.innerText = budgetAmount;
-  // }
-  // budgetInput.value = '';
-  const budget = new Budget();
+  if (budgetInput.value === '') {
+    return;
+  }
 
+  const budget = new Budget();
   budget.isValueCorrect(Number(budgetInput.value));
+  budgetInput.value = '';
   budget.updateBudget(budgetInfoSpan);
   budget.checkBalance(expenseInfoSpan, balanceInfoSpan);
 });
 
 const addExpenseBtn = document.querySelector('.form__add-expense-btn');
-
 const expenseTitleInput = document.querySelector('input[name="title"]');
 const expenseAmountInput = document.querySelector('input[name="amount"]');
 let number = 0;
 const expenseDB = [];
-
+const expense = new Expense();
 addExpenseBtn.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const expenseTitle = expenseTitleInput.value;
-  const expenseAmount = expenseAmountInput.value;
-  if (expenseAmount > 0 && expenseAmount !== NaN) {
-    expenseInfoSpan.innerText = expenseAmount;
-    number++;
-    expenseDB.push({
-      number: number,
-      title: expenseTitle,
-      amount: expenseAmount,
-    });
+  if (
+    expenseTitleInput.value === '' ||
+    expenseAmountInput.value === '' ||
+    expenseAmountInput.value < 0 ||
+    expenseAmountInput.value == 0
+  ) {
+    return;
   }
+
+  console.log(expenseTitleInput.value, expenseAmountInput.value);
+  expense.isExpenseCorrect(
+    expenseTitleInput.value,
+    Number(expenseAmountInput.value),
+  );
+
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
-
-  if (number === 1) {
-    const expenseHtml = `<table class="table table-striped">
-  <tbody>
-    <tr>
-      <th scope="row">${number}</th>
-      <td>${expenseDB[0].title}</td>
-      <td>${expenseDB[0].amount}</td>
-      <td class="table__buttons">
-      <button><ion-icon class="table__icon text-success" name="create"></ion-icon></button>
-			<button><ion-icon class="table__icon text-danger" name="trash"></ion-icon></button>
-      </td>
-    </tr>
-  </tbody>
-</table>`;
-
-    document.querySelector('.table').innerHTML = expenseHtml;
-  } else if (number > 1) {
-    const tableTbody = document.querySelector('.table tbody');
-    const tr = document.createElement('tr');
-    const expenseHtml = `<th scope="row">${number}</th>
-      <td>${expenseDB[expenseDB.length - 1].title}</td>
-      <td>${expenseDB[expenseDB.length - 1].amount}</td>
-      <td class="table__buttons">
-      <button><ion-icon class="table__icon text-success" name="create"></ion-icon></button>
-			<button><ion-icon class="table__icon text-danger" name="trash"></ion-icon></button>
-      </td>`;
-    tr.innerHTML = expenseHtml;
-    tableTbody.appendChild(tr);
-  }
 });
