@@ -130,6 +130,7 @@ class Expense {
 
     expense.expensesList.forEach((element, key) => {
       element.dataset.key = key;
+      element.childNodes[0].innerText = key + 1;
       document.querySelector('.table tbody').appendChild(element);
     });
   }
