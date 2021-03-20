@@ -19,7 +19,6 @@ class Expense {
         expenseDate: new Date().toLocaleDateString(),
       };
       this.expenses.push(expense);
-      console.log(this.expenses);
     }
   }
 
