@@ -113,7 +113,7 @@ class Expense {
 
     const currentExpenseValue = Number(expenseInfoSpan.textContent);
     const expenseValue = Number(
-      expense.expensesList[index].childNodes[1].textContent,
+      expense.expensesList[index].childNodes[2].textContent,
     );
     const diff = currentExpenseValue - expenseValue;
     expenseInfoSpan.innerText = diff;
