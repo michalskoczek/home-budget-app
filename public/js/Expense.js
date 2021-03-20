@@ -144,9 +144,11 @@ class Expense {
     th.innerText = this.expenses.length;
 
     const tdTitle = document.createElement('td');
+    tdTitle.id = 'form-title-expense';
     tdTitle.innerText = this.expenses[this.expenses.length - 1].expenseTitle;
 
     const tdAmount = document.createElement('td');
+    tdAmount.id = 'form-amount-expense';
     tdAmount.innerText = this.expenses[this.expenses.length - 1].expenseAmount;
 
     const tdButtons = document.createElement('td');
@@ -154,7 +156,7 @@ class Expense {
 
     const buttonEdit = document.createElement('button');
     const iconEdit = document.createElement('ion-icon');
-    buttonEdit.setAttribute('id', 'edit');
+    buttonEdit.id = 'edit';
     iconEdit.classList.add('table__icon');
     iconEdit.classList.add('text-success');
     iconEdit.setAttribute('name', 'create');
@@ -163,7 +165,7 @@ class Expense {
 
     const buttonDelete = document.createElement('button');
     const iconDelete = document.createElement('ion-icon');
-    buttonDelete.setAttribute('id', 'delete');
+    buttonDelete.id = 'delete';
     iconDelete.classList.add('table__icon');
     iconDelete.classList.add('text-danger');
     iconDelete.setAttribute('name', 'trash');
