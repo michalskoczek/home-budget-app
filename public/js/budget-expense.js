@@ -44,12 +44,12 @@ addExpenseBtn.addEventListener('click', (e) => {
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
 
-  expense.addExpenseToTable();
-
   expense.updateExpense(expenseInfoSpan);
   expense.updateBalance(
     balanceInfoSpan,
     budget.budgetAmounts[budget.budgetAmounts.length - 1],
     Number(expenseInfoSpan.textContent),
   );
+
+  expense.addExpenseToTable();
 });
