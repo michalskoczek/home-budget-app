@@ -39,8 +39,70 @@ class Expense {
     }
   }
 
-  editExpense() {
-    console.log('edit');
+  createButtonCorrectExpense() {
+    const buttonCorrectExpense = document.createElement('button');
+    buttonCorrectExpense.className = 'form__add-expense-btn btn btn-danger';
+    buttonCorrectExpense.id = 'update-expense';
+    buttonCorrectExpense.innerText = 'Update';
+    document.querySelector('#expenses form').appendChild(buttonCorrectExpense);
+  }
+
+  editExpense(e) {
+    const index = e.target.parentNode.parentNode.parentNode.dataset.key;
+
+    const addExpenseButton = document.querySelector('.form__add-expense-btn');
+    addExpenseButton.remove();
+
+    expense.createButtonCorrectExpense();
+
+    const expensesTitlesArray = [
+      ...document.querySelectorAll('#form-title-expense'),
+    ];
+    const expensesAmountsArray = [
+      ...document.querySelectorAll('#form-amount-expense'),
+    ];
+
+    expenseTitleInput.value = expensesTitlesArray[index].textContent;
+    expenseAmountInput.value = expensesAmountsArray[index].textContent;
+
+    const correctExpense = (e) => {
+      e.preventDefault();
+
+      if (
+        typeof expenseAmountInput.value === 'string' &&
+        expenseAmountInput.value > 0 &&
+        !isNaN(expenseAmountInput.value) &&
+        typeof expenseTitleInput.value === 'string' &&
+        expenseTitleInput.value !== ''
+      ) {
+        expensesTitlesArray[index].innerText = expenseTitleInput.value;
+        expensesAmountsArray[index].innerText = Number(
+          expenseAmountInput.value,
+        );
+        expense.expenses[index].expenseTitle = expenseTitleInput.value;
+        expense.expenses[index].expenseAmount = Number(
+          expenseAmountInput.value,
+        );
+      } else {
+        console.log('wrong value or title');
+      }
+
+      expense.updateExpense(expenseInfoSpan);
+      expense.updateBalance(
+        balanceInfoSpan,
+        budget.budgetAmounts[budget.budgetAmounts.length - 1],
+        Number(expenseInfoSpan.textContent),
+      );
+
+      expenseTitleInput.value = '';
+      expenseAmountInput.value = '';
+
+      updateExpenseButton.remove();
+      document.querySelector('#expenses form').appendChild(addExpenseButton);
+    };
+
+    const updateExpenseButton = document.querySelector('#update-expense');
+    updateExpenseButton.addEventListener('click', correctExpense);
   }
 
   deleteExpense(e) {
