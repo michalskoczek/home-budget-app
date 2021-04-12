@@ -5,8 +5,7 @@ const registerController = require('../controllers/register');
 
 router.get('/', registerController.getRegisterHomepage);
 
-  const existEmail = await User.findOne({ email: req.body.email });
-  if (existEmail) return res.status(400).send('Email exists');
+router.post('/', registerController.postRegisterForm);
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
