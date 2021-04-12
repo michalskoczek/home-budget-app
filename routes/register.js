@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('register', { pageTitle: 'Home Budget App' });
-});
+const registerController = require('../controllers/register');
 
 router.post('/', async (req, res) => {
   const { error } = registerValidation(req.body);
