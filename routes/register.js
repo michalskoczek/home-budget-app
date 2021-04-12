@@ -3,9 +3,7 @@ const router = express.Router();
 
 const registerController = require('../controllers/register');
 
-router.post('/', async (req, res) => {
-  const { error } = registerValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+router.get('/', registerController.getRegisterHomepage);
 
   const existEmail = await User.findOne({ email: req.body.email });
   if (existEmail) return res.status(400).send('Email exists');
