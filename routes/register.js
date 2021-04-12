@@ -1,9 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../model/User');
-const { registerValidation, loginValidation } = require('../validation');
 
 router.get('/', (req, res) => {
   res.render('register', { pageTitle: 'Home Budget App' });
