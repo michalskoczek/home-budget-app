@@ -2,6 +2,17 @@
   margin: 50px 15px;
 }
 
+.span-login a {
+  text-decoration: none;
+  outline: none;
+  color: #000;
+}
+
+.span-login a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
 .form-container {
   padding: 15px 30px 110px;
   border: 1px solid #888;
