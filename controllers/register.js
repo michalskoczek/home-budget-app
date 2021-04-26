@@ -22,7 +22,13 @@ exports.postRegisterForm = async (req, res) => {
     });
 
   const existEmail = await User.findOne({ email: req.body.email });
-  if (existEmail) return res.status(400).send('Email exists');
+  if (existEmail)
+    return res.render('register', {
+      error: true,
+      message: 'Email exists',
+      pageTitle: 'Home Budget App',
+      successfulResgistration: false,
+    });
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -36,7 +42,15 @@ exports.postRegisterForm = async (req, res) => {
   try {
     const savedUser = await user.save();
     // res.send({ userId: user._id });
-    res.redirect('../login');
+    //res.redirect('../login');
+    const { name } = savedUser;
+
+    return res.render('register', {
+      error: false,
+      pageTitle: 'Home Budget App',
+      successfulResgistration: true,
+      messageRegistration: `Hi ${name}! Your profile has just created!`,
+    });
   } catch (err) {
     res.status(400).send(err);
   }
