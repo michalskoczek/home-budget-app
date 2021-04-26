@@ -13,7 +13,13 @@ exports.getRegisterHomepage = (req, res) => {
 
 exports.postRegisterForm = async (req, res) => {
   const { error } = registerValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error)
+    return res.render('register', {
+      error: true,
+      message: error.details[0].message,
+      pageTitle: 'Home Budget App',
+      successfulResgistration: false,
+    });
 
   const existEmail = await User.findOne({ email: req.body.email });
   if (existEmail) return res.status(400).send('Email exists');
