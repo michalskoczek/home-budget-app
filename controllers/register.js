@@ -4,7 +4,11 @@ const User = require('../model/User');
 const { registerValidation, loginValidation } = require('../validation');
 
 exports.getRegisterHomepage = (req, res) => {
-  res.render('register', { pageTitle: 'Home Budget App' });
+  res.render('register', {
+    pageTitle: 'Home Budget App',
+    error: false,
+    successfulResgistration: false,
+  });
 };
 
 exports.postRegisterForm = async (req, res) => {
