@@ -41,16 +41,7 @@ exports.postRegisterForm = async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    // res.send({ userId: user._id });
-    //res.redirect('../login');
-    const { name } = savedUser;
-
-    return res.render('register', {
-      error: false,
-      pageTitle: 'Home Budget App',
-      successfulResgistration: true,
-      messageRegistration: `Hi ${name}! Your profile has just created!`,
-    });
+    res.redirect('../login/user');
   } catch (err) {
     res.status(400).send(err);
   }
