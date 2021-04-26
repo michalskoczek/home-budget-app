@@ -16,6 +16,17 @@
   text-transform: uppercase;
 }
 
+.header__link {
+  color: #000;
+  text-decoration: none;
+  outline: none;
+}
+
+.header__link:hover {
+  color: #000;
+  text-decoration: none;
+}
+
 @media (min-width: 768px) {
   .header__title {
     font-size: 24px;
