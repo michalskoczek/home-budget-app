@@ -2,6 +2,14 @@
     <link rel="stylesheet" href="/style/register-login.css" />
    <%- include('includes/nav.ejs') %>
     </header>
+    <% if(successfulResgistration) { %> 
+      <div id="alert-message" class="container">
+        <div class="alert alert-success row" role="alert">
+          <%= messageRegistration %>
+          <span class="span-login"> Please, <a href="/login"> sign in!</a></span>
+        </div>
+      </div>
+    <% } %> 
     <main class="main-container row justify-content-center">
       <div class="form-container col col-lg-6">
         <form>
@@ -32,5 +40,8 @@
         </form>
       </div>
     </main>
+    <% if (successfulResgistration) { %>
+      <%- include('includes/register-alerts.ejs') %>
+    <% } %>
 <%- include('includes/scripts.ejs') %>
 <%- include('includes/end.ejs') %>
