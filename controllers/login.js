@@ -48,6 +48,6 @@ exports.postLoginAuth = async (req, res) => {
     return res.redirect('../user/budget')
   }
 
-  const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header('auth-token', accessToken).send(accessToken);
+  // const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  // res.header('auth-token', accessToken).send(accessToken);
 };
