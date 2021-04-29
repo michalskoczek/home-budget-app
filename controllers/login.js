@@ -23,7 +23,12 @@ exports.getLoggedPage = (req, res) => {
 
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.render('login', {
+    pageTitle: 'Home Budget App',
+    successfulResgistration: false,
+    error: true,
+    messageError: error.details[0].message,
+  })
 
   const user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send('Email is not found');
