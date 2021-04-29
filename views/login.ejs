@@ -2,11 +2,10 @@
     <link rel="stylesheet" href="/style/register-login.css" />
    <%- include('includes/nav.ejs') %>
     </header>
-    <% if(successfulResgistration) { %> 
+    <% if(error || successfulResgistration) { %> 
       <div id="alert-message" class="container">
-        <div class="alert alert-success row" role="alert">
-          <%= messageRegistration %>
-          <span class="span-login"> Please, <a href="/login"> sign in!</a></span>
+        <div class="<%= error === true ? 'alert-warning' : 'alert-success' %> alert row" role="alert">
+          <%= error === true ? messageError : messageRegistration %>
         </div>
       </div>
     <% } %> 
@@ -40,8 +39,8 @@
         </form>
       </div>
     </main>
-    <% if (successfulResgistration) { %>
-      <%- include('includes/register-alerts.ejs') %>
+    <% if (error || successfulResgistration) { %>
+      <%- include('includes/alert-message.ejs') %>
     <% } %>
 <%- include('includes/scripts.ejs') %>
 <%- include('includes/end.ejs') %>
