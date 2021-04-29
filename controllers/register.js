@@ -15,7 +15,7 @@ exports.postRegisterForm = async (req, res) => {
   if (error)
     return res.render('register', {
       error: true,
-      message: error.details[0].message,
+      messageError: error.details[0].message,
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
     });
@@ -24,7 +24,7 @@ exports.postRegisterForm = async (req, res) => {
   if (existEmail)
     return res.render('register', {
       error: true,
-      message: 'Email exists',
+      messageError: 'Email exists',
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
     });
@@ -40,7 +40,6 @@ exports.postRegisterForm = async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    console.log(savedUser);
     res.redirect('../login/user');
   } catch (err) {
     res.status(400).send(err);
