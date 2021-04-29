@@ -3,6 +3,24 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/User');
 const { loginValidation } = require('../validation');
 
+exports.getLoginPage = (req, res) => {
+   res.render('login', {
+    pageTitle: 'Home Budget App',
+    error: false,
+    successfulResgistration: false,
+    messageRegistration: 'Your profile has just created!',
+  });
+}
+
+exports.getLoggedPage = (req, res) => {
+  res.render('login', {
+    pageTitle: 'Home Budget App',
+    error: false,
+    successfulResgistration: true,
+    messageRegistration: 'Your profile has just created!',
+  }); 
+}
+
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
