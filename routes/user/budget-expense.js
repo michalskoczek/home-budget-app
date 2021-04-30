@@ -6,13 +6,8 @@ router.get('/', (req, res) => {
     pageTitle: 'Home Budget App',
     path: '/user',
     isLogged: req.session.isLogged,
+    userName: req.session.userName,
   });
-});
-
-router.get('/:id', (req, res) => {
-  const userId = req.params.id;
-  console.log(userId);
-  res.redirect('/');
 });
 
 module.exports = router;
