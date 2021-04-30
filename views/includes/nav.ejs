@@ -4,3 +4,29 @@
       <div class="col">
         <h1 class="header__title"><a class="header__link" href="/">home budget app</a></h1>
       </div>
+      <nav class="header__nav col-lg-auto">
+        <ul class="header__item-list">
+          <li class="<%= path === '/register' || '/user' ? 'd-none' : '' %> list-inline-item">
+            <a
+              href="/register"
+              class="header__btn btn btn-secondary"
+              role="button"
+              >Register</a
+            >
+          </li>
+          <li class="<%= path === '/login' || '/user' ? 'd-none' : '' %> list-inline-item">
+            <a
+              href="/login"
+              class="header__btn header__btn--login btn btn-secondary"
+              role="button"
+              >Log in</a
+            >
+          </li>
+          <li class="<%= isLogged === true ? '' : 'd-none' %> list-inline-item">
+            <form action="/logout" method="POST">
+              <button class="header__btn btn btn-danger" type="submit">Logout</button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </header>
