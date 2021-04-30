@@ -56,6 +56,11 @@
         </form>
       </div>
       <% if(isLogged) { %>
+      <div id="alert-message" class="container">
+        <div class="alert alert-success row" role="alert">
+          <span>Hi <%= userName %>, nice to see you again!</span>
+        </div>
+      </div>
       <section class="information container col-lg-6 order-lg-6">
         <div class="row">
           <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
