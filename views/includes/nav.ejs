@@ -23,8 +23,9 @@
               >Log in</a
             >
           </li>
+          <% } %>
           <li class="<%= isLogged === true ? '' : 'd-none' %> list-inline-item">
-            <form action="/logout" method="POST">
+            <form action="/login/logout" method="POST">
               <button class="header__btn btn btn-danger" type="submit">Logout</button>
             </form>
           </li>
