@@ -30,6 +30,7 @@ exports.postLoginAuth = async (req, res) => {
   if (error)
     return res.render('login', {
       pageTitle: 'Home Budget App',
+      path: '/login',
       successfulResgistration: false,
       error: true,
       messageError: error.details[0].message,
@@ -40,6 +41,7 @@ exports.postLoginAuth = async (req, res) => {
   if (!user)
     return res.render('login', {
       pageTitle: 'Home Budget App',
+      path: '/login',
       successfulResgistration: false,
       error: true,
       messageError: 'Email is not found',
@@ -50,6 +52,7 @@ exports.postLoginAuth = async (req, res) => {
   if (!validPass) {
     return res.render('login', {
       pageTitle: 'Home Budget App',
+      path: '/login',
       successfulResgistration: false,
       error: true,
       messageError: 'Password is invalid',
