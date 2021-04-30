@@ -1,51 +1,31 @@
 <%- include('includes/head.ejs') %>
-    <link rel="stylesheet" href="/flickity.css" media="screen" />
-    <link rel="stylesheet" href="/style/homepage.css" />
-  <%- include('includes/nav.ejs') %>
-      <nav class="header__nav col-lg-auto">
-        <ul class="header__item-list">
-          <li class="list-inline-item">
-            <a
-              href="/register"
-              class="header__btn btn btn-secondary"
-              role="button"
-              >Register</a
-            >
-          </li>
-          <li class="list-inline-item">
-            <a
-              href="/login"
-              class="header__btn header__btn--login btn btn-secondary"
-              role="button"
-              >Log in</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main class="main row justify-content-center">
-      <div class="main__title-container">
-        <p class="main__title">Manage your budget</p>
-      </div>
-      <div class="flickity-carousel col-12">
-        <div class="main-carousel">
-          <div class="carousel-cell"></div>
-          <div class="carousel-cell"></div>
-          <div class="carousel-cell"></div>
-          <div class="carousel-cell"></div>
-          <div class="carousel-cell"></div>
-        </div>
-      </div>
-    </main>
-    <div class="register-login__container row justify-content-center">
-      <p class="register-login__title col-12">Create an account or login</p>
-      <button class="register-login__button btn btn-secondary col-4"><a href="/register">Register</a></button>
-      <button
-        class="register-login__button btn btn-secondary col-4"
-      ><a href="/login">Sign in</a>
-      </button>
+<link rel="stylesheet" href="/flickity.css" media="screen" />
+<link rel="stylesheet" href="/style/homepage.css" />
+<%- include('includes/nav.ejs') %>
+<main class="main row justify-content-center">
+  <div class="main__title-container">
+    <p class="main__title">Manage your budget</p>
+  </div>
+  <div class="flickity-carousel col-12">
+    <div class="main-carousel">
+      <div class="carousel-cell"></div>
+      <div class="carousel-cell"></div>
+      <div class="carousel-cell"></div>
+      <div class="carousel-cell"></div>
+      <div class="carousel-cell"></div>
     </div>
+  </div>
+</main>
+<div class="register-login__container row justify-content-center">
+  <p class="register-login__title col-12">Create an account or login</p>
+  <button class="register-login__button btn btn-secondary col-4">
+    <a href="/register">Register</a>
+  </button>
+  <button class="register-login__button btn btn-secondary col-4">
+    <a href="/login">Sign in</a>
+  </button>
+</div>
 <%- include('includes/scripts.ejs') %>
-    <script src="/flickity.pkgd.min.js"></script>
-    <script src="/js/flickity.js"></script>
+<script src="/flickity.pkgd.min.js"></script>
+<script src="/js/flickity.js"></script>
 <%- include('includes/end.ejs') %>
