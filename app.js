@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
@@ -16,6 +18,10 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 const app = express();
+const store = new MongoDBStore({
+  uri: process.env.DB_URI,
+  collection: 'sessions',
+});
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -25,6 +31,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '/node_modules/bootstrap/dist')));
 app.use(express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, '/node_modules/flickity/dist')));
+app.use(
+  session({
+    secret: 'my secret code',
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+  }),
+);
 
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);

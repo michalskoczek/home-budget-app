@@ -5,8 +5,10 @@ const { registerValidation } = require('../validation');
 exports.getRegisterHomepage = (req, res) => {
   res.render('register', {
     pageTitle: 'Home Budget App',
+    path: '/register',
     error: false,
     successfulResgistration: false,
+    isLogged: req.session.isLogged,
   });
 };
 
@@ -18,6 +20,7 @@ exports.postRegisterForm = async (req, res) => {
       messageError: error.details[0].message,
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
+      isLogged: req.session.isLogged,
     });
 
   const existEmail = await User.findOne({ email: req.body.email });
@@ -27,6 +30,7 @@ exports.postRegisterForm = async (req, res) => {
       messageError: 'Email exists',
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
+      isLogged: req.session.isLogged,
     });
 
   const salt = await bcrypt.genSalt(10);
