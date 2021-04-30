@@ -60,9 +60,18 @@ exports.postLoginAuth = async (req, res) => {
     });
   } else {
     req.session.isLogged = true;
+    req.session.userId = user._id;
+    req.session.userName = user.name;
     return res.redirect('../user/budget');
   }
 
   // const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   // res.header('auth-token', accessToken).send(accessToken);
+};
+
+exports.postLogout = (req, res) => {
+  req.session.destroy((err) => {
+    console.log(err);
+    return res.redirect('/');
+  });
 };
