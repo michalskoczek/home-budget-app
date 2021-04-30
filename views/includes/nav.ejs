@@ -6,7 +6,8 @@
       </div>
       <nav class="header__nav col-lg-auto">
         <ul class="header__item-list">
-          <li class="<%= path === '/register' || '/user' ? 'd-none' : '' %> list-inline-item">
+          <% if (!isLogged) { %>
+          <li class="<%= path === '/register' ? 'd-none' : '' %> list-inline-item">
             <a
               href="/register"
               class="header__btn btn btn-secondary"
@@ -14,7 +15,7 @@
               >Register</a
             >
           </li>
-          <li class="<%= path === '/login' || '/user' ? 'd-none' : '' %> list-inline-item">
+          <li class="<%= path === '/login' ? 'd-none' : '' %> list-inline-item">
             <a
               href="/login"
               class="header__btn header__btn--login btn btn-secondary"
