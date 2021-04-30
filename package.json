@@ -19,9 +19,11 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
+    "connect-mongodb-session": "^2.4.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "flickity": "^2.2.2",
     "joi": "^17.4.0",
     "jquery": "^3.5.1",
