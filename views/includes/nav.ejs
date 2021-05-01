@@ -1,34 +1,29 @@
   </head>
   <body class="container">
-    <header class="row">
-      <div class="col">
-        <h1 class="header__title"><a class="header__link" href="/">home budget app</a></h1>
-      </div>
-      <nav class="header__nav col-lg-auto">
-        <ul class="header__item-list">
-          <% if (!isLogged) { %>
-          <li class="<%= path === '/register' ? 'd-none' : '' %> list-inline-item">
-            <a
-              href="/register"
-              class="header__btn btn btn-secondary"
-              role="button"
-              >Register</a
-            >
-          </li>
-          <li class="<%= path === '/login' ? 'd-none' : '' %> list-inline-item">
-            <a
-              href="/login"
-              class="header__btn header__btn--login btn btn-secondary"
-              role="button"
-              >Log in</a
-            >
-          </li>
-          <% } %>
-          <li class="<%= isLogged === true ? '' : 'd-none' %> list-inline-item">
-            <form action="/login/logout" method="POST">
-              <button class="header__btn btn btn-danger" type="submit">Logout</button>
-            </form>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <h1 class="header__title"><a class="header__link" href="/">home budget app</a></h1>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if (!isLogged) { %>
+        <li class="<%= path === '/register' ? 'd-none' : '' %> nav-item active">
+            <a id="header__btn" class="header__btn btn btn-secondary header__link nav-link" href="/register" type="button">Register</a>
+        </li>
+        <li class="<%= path === '/login' ? 'd-none' : '' %> nav-item active">
+            <a id="header__btn" class="header__btn header__btn--login btn btn-secondary header__link nav-link" href="/login" type="button">Login</a>
+        </li>
+        <% } %>
+      </ul>
+      <form class="<%= isLogged === true ? '' : 'd-none' %> form-inline my-2 my-lg-0" action="/login/logout" method="POST">
+        <button class="header__btn--logout btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+    </div>
+  </nav>
+
+<% if (!isLogged) { %>
+  <%- include('window-resize.ejs') %>
+<% } %>

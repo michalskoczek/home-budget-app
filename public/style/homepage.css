@@ -2,19 +2,18 @@
   margin: auto 0;
 }
 
-@media (max-width: 991.99px) {
-  .header__nav {
-    display: none;
-  }
-}
-
 .header__item-list {
   margin: 0;
 }
 
-.header__btn {
+.header__btn,
+.header__btn--logout {
   font: 400 16px 'Montserrat', sans-serif;
   letter-spacing: 0.5px;
+}
+
+.header__btn {
+  color: #fff !important;
 }
 
 .header__btn--login {
