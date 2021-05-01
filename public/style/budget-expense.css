@@ -99,3 +99,17 @@ label {
   text-align: right;
   width: 130px;
 }
+
+.alert-message {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .alert-message {
+    display: block;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 99;
+  }
+}
