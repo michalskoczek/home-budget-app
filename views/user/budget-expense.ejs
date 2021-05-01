@@ -56,11 +56,10 @@
         </form>
       </div>
       <% if(isLogged) { %>
-      <div id="alert-message" class="container">
-        <div class="alert alert-success row" role="alert">
-          <span>Hi <%= userName %>, nice to see you again!</span>
-        </div>
+      <div id="alert-message" class="alert alert-success row position-fixed alert-message" role="alert">
+        <span><strong>Hi <%= userName %>!</strong> Nice to see you again!</span>
       </div>
+
       <section class="information container col-lg-6 order-lg-6">
         <div class="row">
           <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
@@ -78,6 +77,7 @@
           <span class="information__amount information__amount--balance col">---</span>
         </div>
       </section>
+      
       <div class="table col-lg-6 order-lg-12">
         <table class="table table-striped">
           <tbody></tbody>
@@ -87,6 +87,9 @@
     </div>
   </div>
 </main>
+<% if (isLogged) { %>
+      <%- include('../includes/alert-message.ejs') %>
+<% } %>
 <%- include('../includes/scripts.ejs') %>
 <script src="/js/Balance.js"></script>
 <script src="/js/Budget.js"></script>
