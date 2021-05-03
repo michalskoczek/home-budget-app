@@ -63,7 +63,10 @@ exports.postLoginAuth = async (req, res) => {
     req.session.isLogged = true;
     req.session.userId = user._id;
     req.session.userName = user.name;
-    return res.redirect('../user/budget');
+    return req.session.save((err) => {
+      console.log(err);
+      res.redirect('../user/budget');
+    });
   }
 
   // const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
