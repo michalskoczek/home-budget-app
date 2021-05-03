@@ -11,13 +11,16 @@
       <ul class="navbar-nav">
         <% if (!isLogged) { %>
         <li class="<%= path === '/register' ? 'd-none' : '' %> nav-item active">
-            <a id="header__btn" class="header__btn btn btn-secondary header__link nav-link" href="/register" type="button">Register</a>
+          <a id="header__btn" class="header__btn btn btn-secondary header__link nav-link" href="/register" type="button">Register</a>
         </li>
         <li class="<%= path === '/login' ? 'd-none' : '' %> nav-item active">
-            <a id="header__btn" class="header__btn header__btn--login btn btn-secondary header__link nav-link" href="/login" type="button">Login</a>
+          <a id="header__btn" class="header__btn header__btn--login btn btn-secondary header__link nav-link" href="/login" type="button">Login</a>
         </li>
         <% } %>
       </ul>
+      <% if (isLogged) { %>
+      <span class="navbar-user-name"><%= userName %></span>
+      <% } %>
       <form class="<%= isLogged === true ? '' : 'd-none' %> form-inline my-2 my-lg-0" action="/login/logout" method="POST">
         <button class="header__btn--logout btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
       </form>
