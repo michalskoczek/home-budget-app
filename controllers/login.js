@@ -11,6 +11,7 @@ exports.getLoginPage = (req, res) => {
     successfulResgistration: false,
     messageRegistration: 'Your profile has just created!',
     isLogged: req.session.isLogged,
+    userName: req.session.userName,
   });
 };
 
