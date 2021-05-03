@@ -17,7 +17,19 @@ exports.postRegisterForm = async (req, res) => {
   if (error)
     return res.render('register', {
       error: true,
+      path: '/register',
       messageError: error.details[0].message,
+      pageTitle: 'Home Budget App',
+      successfulResgistration: false,
+      isLogged: req.session.isLogged,
+    });
+
+  const existName = await User.findOne({ name: req.body.name });
+  if (existName)
+    return res.render('register', {
+      error: true,
+      path: '/register',
+      messageError: 'Name exists, please use another name.',
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
       isLogged: req.session.isLogged,
@@ -27,7 +39,8 @@ exports.postRegisterForm = async (req, res) => {
   if (existEmail)
     return res.render('register', {
       error: true,
-      messageError: 'Email exists',
+      path: '/register',
+      messageError: 'Email exists, please use another email.',
       pageTitle: 'Home Budget App',
       successfulResgistration: false,
       isLogged: req.session.isLogged,

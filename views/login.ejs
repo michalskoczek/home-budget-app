@@ -3,7 +3,7 @@
    <%- include('includes/nav.ejs') %>
     </header>
     <% if(error || successfulResgistration) { %> 
-      <div id="alert-message" class="container">
+      <div id="alert-message" class="container position-absolute">
         <div class="<%= error === true ? 'alert-warning' : 'alert-success' %> alert row" role="alert">
           <%= error === true ? messageError : messageRegistration %>
         </div>
