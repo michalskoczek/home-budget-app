@@ -9,6 +9,7 @@ exports.getRegisterHomepage = (req, res) => {
     error: false,
     successfulResgistration: false,
     isLogged: req.session.isLogged,
+    userName: req.session.userName,
   });
 };
 
