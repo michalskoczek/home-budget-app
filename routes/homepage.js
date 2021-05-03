@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     pageTitle: 'Home Budget App',
     path: '/',
     isLogged: req.session.isLogged,
+    userName: req.session.userName,
   });
 });
 
