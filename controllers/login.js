@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User = require('../model/User');
 const { loginValidation } = require('../validation');
 
@@ -68,9 +67,6 @@ exports.postLoginAuth = async (req, res) => {
       res.redirect('../user/budget');
     });
   }
-
-  // const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  // res.header('auth-token', accessToken).send(accessToken);
 };
 
 exports.postLogout = (req, res) => {

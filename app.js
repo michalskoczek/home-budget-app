@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
 
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
@@ -22,6 +23,7 @@ const store = new MongoDBStore({
   uri: process.env.DB_URI,
   collection: 'sessions',
 });
+const csrfProtection = csrf();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -39,6 +41,7 @@ app.use(
     store: store,
   }),
 );
+app.use(csrfProtection);
 
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);

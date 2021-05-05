@@ -22,6 +22,7 @@
       <span class="navbar-user-name"><%= userName %></span>
       <% } %>
       <form class="<%= isLogged === true ? '' : 'd-none' %> form-inline my-2 my-lg-0" action="/login/logout" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         <button class="header__btn--logout btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
       </form>
     </div>

@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     path: '/',
     isLogged: req.session.isLogged,
     userName: req.session.userName,
+    csrfToken: req.csrfToken(),
   });
 });
 
