@@ -9,7 +9,6 @@ exports.getLoginPage = (req, res) => {
     error: false,
     successfulResgistration: false,
     messageRegistration: 'Your profile has just created!',
-    isLogged: req.session.isLogged,
     userName: req.session.userName,
   });
 };
@@ -21,12 +20,12 @@ exports.getLoggedPage = (req, res) => {
     error: false,
     successfulResgistration: true,
     messageRegistration: 'Your profile has just created!',
-    isLogged: req.session.isLogged,
   });
 };
 
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
+
   if (error)
     return res.render('login', {
       pageTitle: 'Home Budget App',
@@ -34,7 +33,6 @@ exports.postLoginAuth = async (req, res) => {
       successfulResgistration: false,
       error: true,
       messageError: error.details[0].message,
-      isLogged: req.session.isLogged,
     });
 
   const user = await User.findOne({ email: req.body.email });
@@ -45,7 +43,6 @@ exports.postLoginAuth = async (req, res) => {
       successfulResgistration: false,
       error: true,
       messageError: 'Email is not found',
-      isLogged: req.session.isLogged,
     });
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
@@ -56,7 +53,6 @@ exports.postLoginAuth = async (req, res) => {
       successfulResgistration: false,
       error: true,
       messageError: 'Password is invalid',
-      isLogged: req.session.isLogged,
     });
   } else {
     req.session.isLogged = true;

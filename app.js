@@ -43,6 +43,12 @@ app.use(
 );
 app.use(csrfProtection);
 
+app.use((req, res, next) => {
+  res.locals.isLogged = req.session.isLogged;
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
+
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);

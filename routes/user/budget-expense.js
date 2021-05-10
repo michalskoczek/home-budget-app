@@ -6,7 +6,6 @@ router.get('/', userNotLogged, (req, res) => {
   res.render('user/budget-expense', {
     pageTitle: 'Home Budget App',
     path: '/user',
-    isLogged: req.session.isLogged,
     userName: req.session.userName,
   });
 });
