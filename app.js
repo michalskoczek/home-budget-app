@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
+const flash = require('connect-flash');
 
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
@@ -48,6 +49,8 @@ app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken();
   next();
 });
+
+app.use(flash());
 
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
