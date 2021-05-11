@@ -3,6 +3,13 @@ const User = require('../model/User');
 const { loginValidation } = require('../validation');
 
 exports.getLoginPage = (req, res) => {
+  let message = req.flash('errorMessage');
+  console.log(message.length);
+  if (message.length >= 1) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
@@ -10,16 +17,25 @@ exports.getLoginPage = (req, res) => {
     successfulResgistration: false,
     messageRegistration: 'Your profile has just created!',
     userName: req.session.userName,
+    errorMessageFlash: message,
   });
 };
 
 exports.getLoggedPage = (req, res) => {
+  let message = req.flash('errorMessage');
+  console.log(message.length);
+  if (message.length >= 1) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
     error: false,
     successfulResgistration: true,
     messageRegistration: 'Your profile has just created!',
+    errorMessageFlash: message,
   });
 };
 
@@ -36,14 +52,19 @@ exports.postLoginAuth = async (req, res) => {
     });
 
   const user = await User.findOne({ email: req.body.email });
-  if (!user)
-    return res.render('login', {
-      pageTitle: 'Home Budget App',
-      path: '/login',
-      successfulResgistration: false,
-      error: true,
-      messageError: 'Email is not found',
-    });
+  if (!user) {
+    req.flash('errorMessage', 'Invalid email');
+    // return res.render('login', {
+    //   pageTitle: 'Home Budget App',
+    //   path: '/login',
+    //   successfulResgistration: false,
+    //   error: true,
+    //   messageError: 'Email is not found',
+    //   errorMessageFlash: req.flash('errorMessage'),
+    // });
+
+    return res.redirect('/login');
+  }
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) {
@@ -53,6 +74,7 @@ exports.postLoginAuth = async (req, res) => {
       successfulResgistration: false,
       error: true,
       messageError: 'Password is invalid',
+      errorMessageFlash: '',
     });
   } else {
     req.session.isLogged = true;
