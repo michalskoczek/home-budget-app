@@ -31,37 +31,22 @@ exports.getRegisterHomepage = (req, res) => {
 
 exports.postRegisterForm = async (req, res) => {
   const { error } = registerValidation(req.body);
-  if (error)
-    return res.render('register', {
-      error: true,
-      path: '/register',
-      messageError: error.details[0].message,
-      pageTitle: 'Home Budget App',
-      successfulResgistration: false,
-      isLogged: req.session.isLogged,
-    });
+  if (error) {
+    req.flash('errorMessage', `${error.details[0].message}`);
+    return res.redirect('/register');
+  }
 
   const existName = await User.findOne({ name: req.body.name });
-  if (existName)
-    return res.render('register', {
-      error: true,
-      path: '/register',
-      messageError: 'Name exists, please use another name.',
-      pageTitle: 'Home Budget App',
-      successfulResgistration: false,
-      isLogged: req.session.isLogged,
-    });
+  if (existName) {
+    req.flash('errorMessage', 'Name exists, please use another name.');
+    return res.redirect('/register');
+  }
 
   const existEmail = await User.findOne({ email: req.body.email });
-  if (existEmail)
-    return res.render('register', {
-      error: true,
-      path: '/register',
-      messageError: 'Email exists, please use another email.',
-      pageTitle: 'Home Budget App',
-      successfulResgistration: false,
-      isLogged: req.session.isLogged,
-    });
+  if (existEmail) {
+    req.flash('errorMessage', 'Email exists, please use another email.');
+    return res.redirect('/register');
+  }
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -74,6 +59,7 @@ exports.postRegisterForm = async (req, res) => {
 
   try {
     const savedUser = await user.save();
+    req.flash('successfulMessage', 'Your profile has just created!');
     res.redirect('../login/user');
   } catch (err) {
     res.status(400).send(err);
