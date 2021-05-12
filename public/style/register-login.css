@@ -56,3 +56,13 @@ label {
   left: 50%;
   transform: translateX(-50%);
 }
+
+@media (max-width: 767.99px) {
+  #alert-message {
+    left: 50%;
+    transform: translate(-50%);
+  }
+  #alert-message .alert {
+    font-size: 14px;
+  }
+}
