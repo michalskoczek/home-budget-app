@@ -2,20 +2,20 @@
     <link rel="stylesheet" href="/style/register-login.css" />
    <%- include('includes/nav.ejs') %>
     </header>
-    <% if(error || successfulResgistration) { %> 
+    <% if (errorMessageFlash) { %>
       <div id="alert-message" class="container position-absolute">
-        <div class="<%= error === true ? 'alert-warning' : 'alert-success' %> alert row" role="alert">
-          <%= error === true ? messageError : messageRegistration %>
-        </div>
-      </div>
-    <% } %> 
-    <% if(errorMessageFlash) { %> 
-      <div id="alert-message" class="container position-absolute">
-        <div class="alert-warning alert row" role="alert">
+        <div class="alert alert-warning row" role="alert">
           <%= errorMessageFlash %>
         </div>
       </div>
-    <% } %> 
+    <% } %>
+    <% if (successfulMessageFlash) { %>
+      <div id="alert-message" class="container position-absolute">
+        <div class="alert alert-success row" role="alert">
+          <%= successfulMessageFlash %>
+        </div>
+      </div>
+    <% } %>
     <main class="main-container row justify-content-center">
       <div class="form-container col col-lg-6">
         <form action="/login" method="POST">
@@ -47,8 +47,8 @@
         </form>
       </div>
     </main>
-    <% if (error || successfulResgistration) { %>
+    <% if (errorMessageFlash || successfulMessageFlash) { %>
       <%- include('includes/alert-message.ejs') %>
-    <% } %>
+    <% } %> 
 <%- include('includes/scripts.ejs') %>
 <%- include('includes/end.ejs') %>
