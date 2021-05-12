@@ -2,20 +2,7 @@
     <link rel="stylesheet" href="/style/register-login.css" />
    <%- include('includes/nav.ejs') %>
     </header>
-    <% if (errorMessageFlash) { %>
-      <div id="alert-message" class="container position-absolute">
-        <div class="alert alert-warning row" role="alert">
-          <%= errorMessageFlash %>
-        </div>
-      </div>
-    <% } %>
-    <% if (successfulMessageFlash) { %>
-      <div id="alert-message" class="container position-absolute">
-        <div class="alert alert-success row" role="alert">
-          <%= successfulMessageFlash %>
-        </div>
-      </div>
-    <% } %>
+    <%- include('includes/alert-message.ejs') %>
     <main class="main-container row justify-content-center">
       <div class="form-container col col-lg-6">
         <form action="/register" method="POST">
@@ -57,7 +44,7 @@
       </div>
     </main>
     <% if (errorMessageFlash || successfulMessageFlash) { %>
-      <%- include('includes/alert-message.ejs') %>
+      <%- include('includes/alert-message-link.ejs') %>
     <% } %> 
 <%- include('includes/scripts.ejs') %>
 <%- include('includes/end.ejs') %>

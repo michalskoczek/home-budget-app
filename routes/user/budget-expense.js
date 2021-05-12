@@ -4,7 +4,6 @@ const userNotLogged = require('../../middleware/userNotLogged.js');
 
 router.get('/', userNotLogged, (req, res) => {
   let message = req.flash('successfulMessage');
-  console.log(message.length);
   if (message.length >= 1) {
     message = message[0];
   } else {
