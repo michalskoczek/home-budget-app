@@ -38,46 +38,29 @@ exports.getLoggedPage = (req, res) => {
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
 
-  if (error)
-    return res.render('login', {
-      pageTitle: 'Home Budget App',
-      path: '/login',
-      successfulResgistration: false,
-      error: true,
-      messageError: error.details[0].message,
-    });
+  if (error) {
+    req.flash('errorMessage', `${error.details[0].message}`);
+    return res.redirect('/login');
+  }
 
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    req.flash('errorMessage', 'Invalid email');
-    // return res.render('login', {
-    //   pageTitle: 'Home Budget App',
-    //   path: '/login',
-    //   successfulResgistration: false,
-    //   error: true,
-    //   messageError: 'Email is not found',
-    //   errorMessageFlash: req.flash('errorMessage'),
-    // });
-
+    req.flash('errorMessage', 'Email is not found');
     return res.redirect('/login');
   }
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) {
-    return res.render('login', {
-      pageTitle: 'Home Budget App',
-      path: '/login',
-      successfulResgistration: false,
-      error: true,
-      messageError: 'Password is invalid',
-      errorMessageFlash: '',
-    });
+    req.flash('errorMessage', 'Password is invalid');
+    return res.redirect('/login');
   } else {
     req.session.isLogged = true;
-    req.session.userId = user._id;
     req.session.userName = user.name;
+    req.flash(
+      'successfulMessage',
+      `Hi ${req.session.userName}! Nice to see you again!`,
+    );
     return req.session.save((err) => {
-      console.log(err);
       res.redirect('../user/budget');
     });
   }
