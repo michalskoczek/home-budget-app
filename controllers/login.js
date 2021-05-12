@@ -3,21 +3,19 @@ const User = require('../model/User');
 const { loginValidation } = require('../validation');
 
 exports.getLoginPage = (req, res) => {
-  let message = req.flash('errorMessage');
-  console.log(message.length);
-  if (message.length >= 1) {
-    message = message[0];
+  let errorMessage = req.flash('errorMessage');
+
+  if (errorMessage.length >= 1) {
+    errorMessage = errorMessage[0];
   } else {
-    message = null;
+    errorMessage = null;
   }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
-    error: false,
-    successfulResgistration: false,
-    messageRegistration: 'Your profile has just created!',
     userName: req.session.userName,
-    errorMessageFlash: message,
+    errorMessageFlash: errorMessage,
+    successfulMessageFlash: null,
   });
 };
 
