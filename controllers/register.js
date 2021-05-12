@@ -3,13 +3,29 @@ const User = require('../model/User');
 const { registerValidation } = require('../validation');
 
 exports.getRegisterHomepage = (req, res) => {
+  let messagesFlash = {
+    errorMessage: req.flash('errorMessage'),
+    successfulMessage: req.flash('successfulMessage'),
+  };
+
+  if (
+    messagesFlash.errorMessage.length > 0 ||
+    messagesFlash.successfulMessage.length > 0
+  ) {
+    messagesFlash.errorMessage = messagesFlash.errorMessage[0];
+    messagesFlash.successfulMessage = messagesFlash.successfulMessage[0];
+  } else {
+    messagesFlash.errorMessage = null;
+    messagesFlash.successfulMessage = null;
+  }
+
   res.render('register', {
     pageTitle: 'Home Budget App',
     path: '/register',
-    error: false,
-    successfulResgistration: false,
     isLogged: req.session.isLogged,
     userName: req.session.userName,
+    errorMessageFlash: messagesFlash.errorMessage,
+    successfulMessageFlash: messagesFlash.successfulMessage,
   });
 };
 
