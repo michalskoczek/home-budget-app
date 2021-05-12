@@ -20,20 +20,18 @@ exports.getLoginPage = (req, res) => {
 };
 
 exports.getLoggedPage = (req, res) => {
-  let message = req.flash('errorMessage');
-  console.log(message.length);
-  if (message.length >= 1) {
-    message = message[0];
+  let successfulMessage = req.flash('successfulMessage');
+
+  if (successfulMessage.length >= 1) {
+    successfulMessage = successfulMessage[0];
   } else {
-    message = null;
+    successfulMessage = null;
   }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
-    error: false,
-    successfulResgistration: true,
-    messageRegistration: 'Your profile has just created!',
-    errorMessageFlash: message,
+    successfulMessageFlash: successfulMessage,
+    errorMessageFlash: null,
   });
 };
 
