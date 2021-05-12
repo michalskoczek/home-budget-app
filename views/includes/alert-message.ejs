@@ -1,1 +1,13 @@
-<script src="/js/alert-message.js"></script>
+<% if (errorMessageFlash) { %>
+<div id="alert-message" class="container position-absolute">
+  <div class="alert alert-warning row" role="alert">
+    <%= errorMessageFlash %>
+  </div>
+</div>
+<% } %> <% if (successfulMessageFlash) { %>
+<div id="alert-message" class="container position-absolute">
+  <div class="alert alert-success row" role="alert">
+    <%= successfulMessageFlash %>
+  </div>
+</div>
+<% } %>
