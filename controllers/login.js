@@ -3,85 +3,64 @@ const User = require('../model/User');
 const { loginValidation } = require('../validation');
 
 exports.getLoginPage = (req, res) => {
-  let message = req.flash('errorMessage');
-  console.log(message.length);
-  if (message.length >= 1) {
-    message = message[0];
+  let errorMessage = req.flash('errorMessage');
+
+  if (errorMessage.length >= 1) {
+    errorMessage = errorMessage[0];
   } else {
-    message = null;
+    errorMessage = null;
   }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
-    error: false,
-    successfulResgistration: false,
-    messageRegistration: 'Your profile has just created!',
     userName: req.session.userName,
-    errorMessageFlash: message,
+    errorMessageFlash: errorMessage,
+    successfulMessageFlash: null,
   });
 };
 
 exports.getLoggedPage = (req, res) => {
-  let message = req.flash('errorMessage');
-  console.log(message.length);
-  if (message.length >= 1) {
-    message = message[0];
+  let successfulMessage = req.flash('successfulMessage');
+
+  if (successfulMessage.length >= 1) {
+    successfulMessage = successfulMessage[0];
   } else {
-    message = null;
+    successfulMessage = null;
   }
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
-    error: false,
-    successfulResgistration: true,
-    messageRegistration: 'Your profile has just created!',
-    errorMessageFlash: message,
+    successfulMessageFlash: successfulMessage,
+    errorMessageFlash: null,
   });
 };
 
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
 
-  if (error)
-    return res.render('login', {
-      pageTitle: 'Home Budget App',
-      path: '/login',
-      successfulResgistration: false,
-      error: true,
-      messageError: error.details[0].message,
-    });
+  if (error) {
+    req.flash('errorMessage', `${error.details[0].message}`);
+    return res.redirect('/login');
+  }
 
   const user = await User.findOne({ email: req.body.email });
   if (!user) {
-    req.flash('errorMessage', 'Invalid email');
-    // return res.render('login', {
-    //   pageTitle: 'Home Budget App',
-    //   path: '/login',
-    //   successfulResgistration: false,
-    //   error: true,
-    //   messageError: 'Email is not found',
-    //   errorMessageFlash: req.flash('errorMessage'),
-    // });
-
+    req.flash('errorMessage', 'Email is not found');
     return res.redirect('/login');
   }
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) {
-    return res.render('login', {
-      pageTitle: 'Home Budget App',
-      path: '/login',
-      successfulResgistration: false,
-      error: true,
-      messageError: 'Password is invalid',
-      errorMessageFlash: '',
-    });
+    req.flash('errorMessage', 'Password is invalid');
+    return res.redirect('/login');
   } else {
     req.session.isLogged = true;
-    req.session.userId = user._id;
     req.session.userName = user.name;
+    req.flash(
+      'successfulMessage',
+      `Hi ${req.session.userName}! Nice to see you again!`,
+    );
     return req.session.save((err) => {
-      console.log(err);
       res.redirect('../user/budget');
     });
   }
