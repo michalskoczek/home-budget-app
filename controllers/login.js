@@ -60,14 +60,13 @@ exports.postLoginAuth = async (req, res) => {
       `Hi ${req.session.userName}! Nice to see you again!`,
     );
     return req.session.save((err) => {
-      res.redirect('../user/budget');
+      res.redirect(`../user/${user.name.toLowerCase()}`);
     });
   }
 };
 
 exports.postLogout = (req, res) => {
   req.session.destroy((err) => {
-    console.log(err);
     return res.redirect('/');
   });
 };
