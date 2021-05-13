@@ -55,7 +55,7 @@ app.use(flash());
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/user/:name', budgetExpenseRouter);
+app.use('/user', budgetExpenseRouter);
 
 app.use(errorController.getErrorPage);
 
