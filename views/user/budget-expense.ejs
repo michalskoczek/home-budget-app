@@ -57,11 +57,12 @@
           </button>
         </form>
       </div>
-      <% if(isLogged) { %>
+      <% if(successfulMessageFlash) { %>
       <div id="alert-message" class="alert alert-success row position-fixed alert-message" role="alert">
         <span><%= successfulMessageFlash %></span>
       </div>
-
+      <% } %>
+      <% if(isLogged) { %>
       <section class="information container col-lg-6 order-lg-6">
         <div class="row">
           <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
