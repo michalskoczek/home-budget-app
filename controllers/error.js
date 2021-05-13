@@ -3,5 +3,6 @@ exports.getErrorPage = (req, res) => {
     errorPageTitle: 'Error | Home Budget App',
     path: '/',
     isLogged: req.session.isLogged,
+    userName: req.session.userName,
   });
 };

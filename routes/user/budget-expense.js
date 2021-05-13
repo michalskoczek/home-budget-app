@@ -1,21 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const userNotLogged = require('../../middleware/userNotLogged.js');
+const userController = require('../../controllers/budget-expense');
 
-router.get('/', userNotLogged, (req, res) => {
-  let successfulMessage = req.flash('successfulMessage');
-  if (successfulMessage.length > 0) {
-    successfulMessage = successfulMessage[0];
-  } else {
-    successfulMessage = null;
-  }
-  res.render('user/budget-expense', {
-    pageTitle: 'Home Budget App',
-    path: '/user',
-    userName: req.session.userName,
-    successfulMessageFlash: successfulMessage,
-    errorMessageFlash: null,
-  });
-});
+router.get('/:name', userNotLogged, userController.getBudgetExpense);
 
 module.exports = router;
