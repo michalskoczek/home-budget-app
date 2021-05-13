@@ -4,12 +4,12 @@ const { loginValidation } = require('../validation');
 
 exports.getLoginPage = (req, res) => {
   let errorMessage = req.flash('errorMessage');
-
   if (errorMessage.length >= 1) {
     errorMessage = errorMessage[0];
   } else {
     errorMessage = null;
   }
+
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
@@ -21,12 +21,12 @@ exports.getLoginPage = (req, res) => {
 
 exports.getLoggedPage = (req, res) => {
   let successfulMessage = req.flash('successfulMessage');
-
   if (successfulMessage.length >= 1) {
     successfulMessage = successfulMessage[0];
   } else {
     successfulMessage = null;
   }
+
   res.render('login', {
     pageTitle: 'Home Budget App',
     path: '/login',
@@ -37,7 +37,6 @@ exports.getLoggedPage = (req, res) => {
 
 exports.postLoginAuth = async (req, res) => {
   const { error } = loginValidation(req.body);
-
   if (error) {
     req.flash('errorMessage', `${error.details[0].message}`);
     return res.redirect('/login');
@@ -61,14 +60,13 @@ exports.postLoginAuth = async (req, res) => {
       `Hi ${req.session.userName}! Nice to see you again!`,
     );
     return req.session.save((err) => {
-      res.redirect('../user/budget');
+      res.redirect(`../user/${user.name.toLowerCase()}`);
     });
   }
 };
 
 exports.postLogout = (req, res) => {
   req.session.destroy((err) => {
-    console.log(err);
     return res.redirect('/');
   });
 };
