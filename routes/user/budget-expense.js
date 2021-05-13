@@ -3,17 +3,18 @@ const router = express.Router();
 const userNotLogged = require('../../middleware/userNotLogged.js');
 
 router.get('/', userNotLogged, (req, res) => {
-  let message = req.flash('successfulMessage');
-  if (message.length >= 1) {
-    message = message[0];
+  let successfulMessage = req.flash('successfulMessage');
+  if (successfulMessage.length > 0) {
+    successfulMessage = successfulMessage[0];
   } else {
-    message = null;
+    successfulMessage = null;
   }
   res.render('user/budget-expense', {
     pageTitle: 'Home Budget App',
     path: '/user',
     userName: req.session.userName,
-    successfulMessageFlash: message,
+    successfulMessageFlash: successfulMessage,
+    errorMessageFlash: null,
   });
 });
 
