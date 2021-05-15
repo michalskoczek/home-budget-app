@@ -20,9 +20,11 @@ updateBtn.addEventListener('click', (e) => {
   }
 
   budget.isValueCorrect(Number(budgetInput.value));
-  budgetInput.value = '';
   budget.updateBudget(budgetInfoSpan);
   budget.checkBalance(expenseInfoSpan, balanceInfoSpan);
+  console.log(budget.budgetAmounts);
+  document.querySelector('#form-budget').submit();
+  budgetInput.value = '';
 });
 
 addExpenseBtn.addEventListener('click', (e) => {

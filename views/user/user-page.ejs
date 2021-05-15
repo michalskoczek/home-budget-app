@@ -1,6 +1,6 @@
 <%- include('../includes/head.ejs') %>
   <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
-  <link rel="stylesheet" href="/style/budget-expense.css" />
+  <link rel="stylesheet" href="/style/user-page.css" />
    <%- include('../includes/nav.ejs') %>
     </header>
 <main>
@@ -15,7 +15,7 @@
   <div class="container-lg">
     <div class="tab-content row" id="myTabContent">
       <div class="tab-pane fade show active col-lg-6" id="budget" role="tabpanel" aria-labelledby="budget-tab">
-        <form>
+        <form id="form-budget" action="/user/<%= userName %>/budget" method="POST">
           <div class="form__container form-group">
             <label for="budget">Enter your budget</label>
             <input
@@ -26,7 +26,7 @@
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button class="form__update-budget-btn btn btn-success">
+          <button type="submit" class="form__update-budget-btn btn btn-success">
             Update budget
           </button>
         </form>
@@ -97,5 +97,5 @@
 <script src="/js/Balance.js"></script>
 <script src="/js/Budget.js"></script>
 <script src="/js/Expense.js"></script>
-<script src="/js/budget-expense.js"></script>
+<script src="/js/user-page.js"></script>
 <%- include('../includes/end.ejs') %>
