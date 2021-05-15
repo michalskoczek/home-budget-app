@@ -10,7 +10,7 @@ const flash = require('connect-flash');
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
-const budgetExpenseRouter = require('./routes/user/budget-expense');
+const userPageRouter = require('./routes/user/user-page');
 
 const errorController = require('./controllers/error');
 
@@ -55,7 +55,7 @@ app.use(flash());
 app.use('/', homepageRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/user', budgetExpenseRouter);
+app.use('/user', userPageRouter);
 
 app.use(errorController.getErrorPage);
 
