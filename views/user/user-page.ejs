@@ -1,0 +1,101 @@
+<%- include('../includes/head.ejs') %>
+  <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="/style/user-page.css" />
+   <%- include('../includes/nav.ejs') %>
+    </header>
+<main>
+    <ul class="d-lg-none nav__item-list nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav__item nav-item" role="presentation">
+        <a class="nav__item-link nav-link active" id="budget-tab" data-toggle="tab" href="#budget" role="tab" aria-controls="budget" aria-selected="true">Budget</a>
+      </li>
+       <li class="nav__item nav-item" role="presentation">
+        <a class="nav__item-link nav-link" id="expenses-tab" data-toggle="tab" href="#expenses" role="tab" aria-controls="expenses" aria-selected="false">Expenses</a>
+      </li>
+    </ul>
+  <div class="container-lg">
+    <div class="tab-content row" id="myTabContent">
+      <div class="tab-pane fade show active col-lg-6" id="budget" role="tabpanel" aria-labelledby="budget-tab">
+        <form id="form-budget" action="/user/<%= userName %>/budget" method="POST">
+          <div class="form__container form-group">
+            <label for="budget">Enter your budget</label>
+            <input
+              type="number"
+              class="form__input form-control"
+              name="budget"
+              required
+            />
+          </div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="form__update-budget-btn btn btn-success">
+            Update budget
+          </button>
+        </form>
+      </div>
+      <div class="tab-pane fade col-lg-6 order-lg-8" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+        <form>
+          <div class="form__container form-group">
+            <label for="title">Enter title your expense</label>
+            <input
+              type="text"
+              class="form__input form-control"
+              name="title"
+              required
+            />
+          </div>
+          <div class="form__container form-group">
+            <label for="amount">Enter amount your expense</label>
+            <input
+              type="number"
+              class="form__input form-control"
+              name="amount"
+              required
+            />
+          </div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button class="form__add-expense-btn btn btn-danger">
+            Add expense
+          </button>
+        </form>
+      </div>
+      <% if(successfulMessageFlash) { %>
+      <div id="alert-message" class="alert alert-success row position-fixed alert-message" role="alert">
+        <span><%= successfulMessageFlash %></span>
+      </div>
+      <% } %>
+      <% if(isLogged) { %>
+      <section class="information container col-lg-6 order-lg-6">
+        <div class="row">
+          <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
+          <ion-icon class="information__icon text-danger col" name="basket"></ion-icon>
+          <ion-icon class="information__icon text-primary col" name="wallet"></ion-icon>
+        </div>
+        <div class="row">
+          <p class="information__title col">Budget</p>
+          <p class="information__title col">Expense</p>
+          <p class="information__title col">Balance</p>
+        </div>
+        <div class="row">
+          <span class="information__amount information__amount--budget col">---</span>
+          <span class="information__amount information__amount--expense col">---</span>       
+          <span class="information__amount information__amount--balance col">---</span>
+        </div>
+      </section>
+      
+      <div class="table col-lg-6 order-lg-12">
+        <table class="table table-striped">
+          <tbody></tbody>
+        </table>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</main>
+<% if (isLogged) { %>
+      <%- include('../includes/alert-message-link.ejs') %>
+<% } %>
+<%- include('../includes/scripts.ejs') %>
+<script src="/js/Balance.js"></script>
+<script src="/js/Budget.js"></script>
+<script src="/js/Expense.js"></script>
+<script src="/js/user-page.js"></script>
+<%- include('../includes/end.ejs') %>
