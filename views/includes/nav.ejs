@@ -19,7 +19,7 @@
         <% } %>
       </ul>
       <% if (isLogged) { %>
-      <span class="navbar-user-name"><%= userName %></span>
+      <a href="/user/<%= userName %>" class="navbar-user-name"><%= userName %></a>
       <% } %>
       <form class="<%= isLogged === true ? '' : 'd-none' %> form-inline my-2 my-lg-0" action="/login/logout" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
