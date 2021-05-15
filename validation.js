@@ -20,5 +20,16 @@ const loginValidation = (data) => {
 
   return schema.validate(data);
 };
+
+const budgetValidation = (data) => {
+  const schema = Joi.object({
+    budget: Joi.number().greater(0).positive().required(),
+    _csrf: Joi.string(),
+  });
+
+  return schema.validate(data);
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.budgetValidation = budgetValidation;
