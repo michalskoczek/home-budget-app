@@ -7,7 +7,7 @@ class Budget {
     if (
       typeof value === 'number' &&
       !isNaN(value) &&
-      value >= 1 &&
+      value > 0 &&
       value !== '0' &&
       value !== '-0' &&
       value !== ''
