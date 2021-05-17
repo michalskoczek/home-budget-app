@@ -1,4 +1,20 @@
-<% if (errorMessageFlash) { %>
+<% if(path === '/user') { %> <% if(successfulMessageFlash) { %>
+<div
+  id="alert-message"
+  class="alert alert-success row position-fixed alert-message"
+  role="alert"
+>
+  <span><%= successfulMessageFlash %></span>
+</div>
+<% } %> <% if(errorMessageFlash) { %>
+<div
+  id="alert-message"
+  class="alert alert-warning row position-fixed alert-message"
+  role="alert"
+>
+  <span><%= errorMessageFlash %></span>
+</div>
+<% } %> <% } else { %> <% if (errorMessageFlash) { %>
 <div id="alert-message" class="container position-absolute">
   <div class="alert alert-warning row" role="alert">
     <%= errorMessageFlash %>
@@ -10,4 +26,4 @@
     <%= successfulMessageFlash %>
   </div>
 </div>
-<% } %>
+<% } %> <% } %>
