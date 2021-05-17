@@ -15,7 +15,7 @@
   <div class="container-lg">
     <div class="tab-content row" id="myTabContent">
       <div class="tab-pane fade show active col-lg-6" id="budget" role="tabpanel" aria-labelledby="budget-tab">
-        <form id="form-budget" action="/user/<%= userName %>/budget" method="POST">
+        <form id="form-budget" action="/user/<%= userName %>" method="POST">
           <div class="form__container form-group">
             <label for="budget">Enter your budget</label>
             <input
@@ -57,11 +57,7 @@
           </button>
         </form>
       </div>
-      <% if(successfulMessageFlash) { %>
-      <div id="alert-message" class="alert alert-success row position-fixed alert-message" role="alert">
-        <span><%= successfulMessageFlash %></span>
-      </div>
-      <% } %>
+      <%- include('../includes/alert-message.ejs') %>
       <% if(isLogged) { %>
       <section class="information container col-lg-6 order-lg-6">
         <div class="row">
