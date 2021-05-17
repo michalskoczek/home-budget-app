@@ -5,6 +5,6 @@ const userController = require('../../controllers/user-page');
 
 router.get('/:name', userNotLogged, userController.getBudgetExpense);
 
-router.post('/:name/budget', userController.postBudgetAmount);
+router.post('/:name', userController.postBudgetAmount);
 
 module.exports = router;
