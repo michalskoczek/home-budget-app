@@ -7,4 +7,6 @@ router.get('/:name', userNotLogged, userController.getBudgetExpense);
 
 router.post('/:name', userController.postBudgetAmount);
 
+router.post('/:name/expense', userController.postExpense);
+
 module.exports = router;

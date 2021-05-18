@@ -5,7 +5,7 @@ const budgetInput = document.querySelector('input[name="budget"]');
 const addExpenseBtn = document.querySelector('.form__add-expense-btn');
 const expenseInfoSpan = document.querySelector('.information__amount--expense');
 const expenseTitleInput = document.querySelector('input[name="title"]');
-const expenseAmountInput = document.querySelector('input[name="amount"]');
+const expenseAmountInput = document.querySelector('input[name="expense"]');
 
 const balanceInfoSpan = document.querySelector('.information__amount--balance');
 
@@ -54,4 +54,6 @@ addExpenseBtn.addEventListener('click', (e) => {
   );
 
   expense.addExpenseToTable();
+
+  document.querySelector('#form-expense').submit();
 });
