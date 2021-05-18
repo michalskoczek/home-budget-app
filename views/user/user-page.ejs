@@ -43,18 +43,17 @@
             />
           </div>
           <div class="form__container form-group">
-            <label for="amount">Enter amount your expense</label>
+            <label for="expense">Enter amount your expense</label>
             <input
               type="number"
               class="form__input form-control"
-              name="amount"
+              name="expense"
               required
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button class="form__add-expense-btn btn btn-danger">
-            Add expense
-          </button>
+          <input type="submit" value="Add expense" class="form__add-expense-btn btn btn-danger"/>
+          <!-- ??? -->
         </form>
       </div>
       <%- include('../includes/alert-message.ejs') %>
