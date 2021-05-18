@@ -1,6 +1,7 @@
 const express = require('express');
-const { budgetValidation } = require('../validation');
+const { budgetValidation, expenseValidation } = require('../validation');
 const Budget = require('../model/Budget');
+const Expense = require('../model/Expense');
 
 exports.getBudgetExpense = async (req, res) => {
   if (req.params.name !== req.session.userName)
@@ -63,6 +64,30 @@ exports.postBudgetAmount = async (req, res) => {
     const savedBudget = await budget.save();
     if (savedBudget) {
       req.flash('successfulMessage', 'Budget is correct');
+      res.redirect('/user/:name');
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.postExpense = async (req, res) => {
+  const { error } = expenseValidation(req.body);
+  if (error) {
+    req.flash('errorMessage', error.details[0].message);
+    return res.redirect('/user/:name');
+  }
+
+  const expense = new Expense({
+    userId: req.session.userId,
+    title: req.body.title,
+    amount: req.body.expense,
+  });
+
+  try {
+    const savedExpense = await expense.save();
+    if (savedExpense) {
+      req.flash('successfulMessage', 'Expense is correct');
       res.redirect('/user/:name');
     }
   } catch (err) {
