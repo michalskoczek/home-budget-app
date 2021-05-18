@@ -71,7 +71,7 @@
           <p class="information__title col">Balance</p>
         </div>
         <div class="row">
-          <span class="information__amount information__amount--budget col">---</span>
+          <span class="information__amount information__amount--budget col"><%= userBudget ? userBudget : '---'%></span>
           <span class="information__amount information__amount--expense col">---</span>       
           <span class="information__amount information__amount--balance col">---</span>
         </div>
