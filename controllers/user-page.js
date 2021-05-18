@@ -21,13 +21,30 @@ exports.getBudgetExpense = async (req, res) => {
     messagesFlash.errorMessage = null;
     messagesFlash.successfulMessage = null;
   }
-  res.render('user/user-page', {
-    pageTitle: 'Home Budget App',
-    path: '/user',
-    userName: req.session.userName,
-    errorMessageFlash: messagesFlash.errorMessage,
-    successfulMessageFlash: messagesFlash.successfulMessage,
+
+  const budgetAmount = await Budget.find({
+    userId: req.session.userId,
   });
+
+  if (budgetAmount) {
+    res.render('user/user-page', {
+      pageTitle: 'Home Budget App',
+      path: '/user',
+      userBudget: budgetAmount[budgetAmount.length - 1].amount,
+      userName: req.session.userName,
+      errorMessageFlash: messagesFlash.errorMessage,
+      successfulMessageFlash: messagesFlash.successfulMessage,
+    });
+  } else {
+    res.render('user/user-page', {
+      pageTitle: 'Home Budget App',
+      path: '/user',
+      userBudget: null,
+      userName: req.session.userName,
+      errorMessageFlash: messagesFlash.errorMessage,
+      successfulMessageFlash: messagesFlash.successfulMessage,
+    });
+  }
 };
 
 exports.postBudgetAmount = async (req, res) => {
@@ -38,6 +55,7 @@ exports.postBudgetAmount = async (req, res) => {
   }
 
   const budget = new Budget({
+    userId: req.session.userId,
     amount: req.body.budget,
   });
 
@@ -45,8 +63,7 @@ exports.postBudgetAmount = async (req, res) => {
     const savedBudget = await budget.save();
     if (savedBudget) {
       req.flash('successfulMessage', 'Budget is correct');
-      console.log('budget is correct');
-      res.sendStatus(200);
+      res.redirect('/user/:name');
     }
   } catch (err) {
     console.log(err);
