@@ -2,7 +2,7 @@ const express = require('express');
 const { budgetValidation } = require('../validation');
 const Budget = require('../model/Budget');
 
-exports.getBudgetExpense = (req, res) => {
+exports.getBudgetExpense = async (req, res) => {
   if (req.params.name !== req.session.userName)
     return res.redirect(`/user/${req.session.userName}`);
 
