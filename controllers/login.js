@@ -55,6 +55,7 @@ exports.postLoginAuth = async (req, res) => {
   } else {
     req.session.isLogged = true;
     req.session.userName = user.name;
+    req.session.userId = user._id;
     req.flash(
       'successfulMessage',
       `Hi ${req.session.userName}! Nice to see you again!`,
