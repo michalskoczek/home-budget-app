@@ -43,9 +43,6 @@ addExpenseBtn.addEventListener('click', (e) => {
     Number(expenseAmountInput.value),
   );
 
-  expenseTitleInput.value = '';
-  expenseAmountInput.value = '';
-
   expense.updateExpense(expenseInfoSpan);
   expense.updateBalance(
     balanceInfoSpan,
@@ -56,4 +53,7 @@ addExpenseBtn.addEventListener('click', (e) => {
   expense.addExpenseToTable();
 
   document.querySelector('#form-expense').submit();
+
+  expenseTitleInput.value = '';
+  expenseAmountInput.value = '';
 });
