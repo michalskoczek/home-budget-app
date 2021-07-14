@@ -33,7 +33,7 @@ exports.getBudgetExpense = async (req, res) => {
 
   console.log(expense);
 
-  if (budgetAmount) {
+  if (budgetAmount.length !== 0) {
     res.render('user/user-page', {
       pageTitle: 'Home Budget App',
       path: '/user',
