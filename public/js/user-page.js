@@ -52,8 +52,6 @@ addExpenseBtn.addEventListener('click', (e) => {
 
   expense.addExpenseToTable();
 
-  document.querySelector('#form-expense').submit();
-
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
 });
