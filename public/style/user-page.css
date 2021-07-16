@@ -49,6 +49,7 @@ label {
 
 .form__save-expenses-btn {
   left: 93%;
+  visibility: hidden;
 }
 
 @media (min-width: 992px) {
