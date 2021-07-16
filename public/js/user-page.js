@@ -9,6 +9,8 @@ const expenseAmountInput = document.querySelector('input[name="expense"]');
 
 const balanceInfoSpan = document.querySelector('.information__amount--balance');
 
+const saveExpensesButton = document.querySelector('#save-expenses-btn');
+
 const budget = new Budget();
 const expense = new Expense();
 
@@ -54,4 +56,6 @@ addExpenseBtn.addEventListener('click', (e) => {
 
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
+
+  expense.showSaveExpensesButton(saveExpensesButton);
 });
