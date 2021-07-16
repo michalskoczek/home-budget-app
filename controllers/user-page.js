@@ -31,8 +31,6 @@ exports.getBudgetExpense = async (req, res) => {
     userId: req.session.userId,
   });
 
-  console.log(expenseAmount);
-
   if (budgetAmount.length !== 0) {
     res.render('user/user-page', {
       pageTitle: 'Home Budget App',
@@ -80,7 +78,6 @@ exports.postBudgetAmount = async (req, res) => {
 };
 
 exports.postExpense = async (req, res) => {
-  console.log(req.body);
   const { error } = expenseValidation(req.body);
   if (error) {
     req.flash('errorMessage', error.details[0].message);

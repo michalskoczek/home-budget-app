@@ -52,7 +52,10 @@
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button class="form__add-expense-btn btn btn-danger">
+          <button type="button" id="save-expenses-btn" class="form__save-expenses-btn btn btn-secondary">
+            Save expenses
+          </button>
+          <button type="button" class="form__add-expense-btn btn btn-danger">
             Add expense
           </button>
         </form>

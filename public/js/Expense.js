@@ -19,6 +19,7 @@ class Expense {
         expenseDate: new Date().toLocaleDateString(),
       };
       this.expenses.push(expense);
+      console.log(this.expenses);
     }
   }
 
@@ -32,7 +33,7 @@ class Expense {
   }
 
   updateBalance(showBalance, budget, expense) {
-    if (typeof budget === 'undefined') {
+    if (budget.textContent === '---') {
       showBalance.innerText = 'Fill your budget';
     } else {
       showBalance.innerText = budget - expense;
@@ -186,5 +187,12 @@ class Expense {
 
     tr.querySelector('#edit').addEventListener('click', this.editExpense);
     tr.querySelector('#delete').addEventListener('click', this.deleteExpense);
+  }
+
+  showSaveExpensesButton(saveButton) {
+    if (saveButton.style.visibility === 'visible') return;
+    else {
+      saveButton.style.visibility = 'visible';
+    }
   }
 }

@@ -9,6 +9,8 @@ const expenseAmountInput = document.querySelector('input[name="expense"]');
 
 const balanceInfoSpan = document.querySelector('.information__amount--balance');
 
+const saveExpensesButton = document.querySelector('#save-expenses-btn');
+
 const budget = new Budget();
 const expense = new Expense();
 
@@ -22,7 +24,6 @@ updateBtn.addEventListener('click', (e) => {
   budget.isValueCorrect(Number(budgetInput.value));
   budget.updateBudget(budgetInfoSpan);
   budget.checkBalance(expenseInfoSpan, balanceInfoSpan);
-  console.log(budget.budgetAmounts);
   document.querySelector('#form-budget').submit();
   budgetInput.value = '';
 });
@@ -46,7 +47,7 @@ addExpenseBtn.addEventListener('click', (e) => {
   expense.updateExpense(expenseInfoSpan);
   expense.updateBalance(
     balanceInfoSpan,
-    budget.budgetAmounts[budget.budgetAmounts.length - 1],
+    Number(budgetInfoSpan.textContent),
     Number(expenseInfoSpan.textContent),
   );
 
@@ -54,4 +55,6 @@ addExpenseBtn.addEventListener('click', (e) => {
 
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
+
+  expense.showSaveExpensesButton(saveExpensesButton);
 });
