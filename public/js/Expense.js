@@ -186,5 +186,14 @@ class Expense {
 
     tr.querySelector('#edit').addEventListener('click', this.editExpense);
     tr.querySelector('#delete').addEventListener('click', this.deleteExpense);
+
+    console.log(this.expensesList);
+  }
+
+  showSaveExpensesButton(element) {
+    if (element.style.visibility === 'visible') return;
+    else {
+      element.style.visibility = 'visible';
+    }
   }
 }
