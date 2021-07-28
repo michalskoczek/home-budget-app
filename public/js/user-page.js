@@ -56,5 +56,5 @@ addExpenseBtn.addEventListener('click', (e) => {
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
 
-  expense.showSaveExpensesButton(saveExpensesButton);
+  // expense.showSaveExpensesButton(saveExpensesButton);
 });
