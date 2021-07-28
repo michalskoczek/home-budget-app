@@ -27,16 +27,18 @@ exports.getBudgetExpense = async (req, res) => {
     userId: req.session.userId,
   });
 
-  const expenseAmount = await Expense.find({
+  const expense = await Expense.find({
     userId: req.session.userId,
   });
+
+  console.log(expense);
 
   if (budgetAmount.length !== 0) {
     res.render('user/user-page', {
       pageTitle: 'Home Budget App',
       path: '/user',
       userBudget: budgetAmount[budgetAmount.length - 1].amount,
-      userExpense: expenseAmount[expenseAmount.length - 1].amount,
+      userExpense: null,
       userName: req.session.userName,
       errorMessageFlash: messagesFlash.errorMessage,
       successfulMessageFlash: messagesFlash.successfulMessage,

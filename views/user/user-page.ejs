@@ -32,7 +32,7 @@
         </form>
       </div>
       <div class="tab-pane fade col-lg-6 order-lg-8" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
-        <form id="form-expense">
+        <form id="form-expense" action="/user/<%= userName %>/expense" method="POST">
           <div class="form__container form-group">
             <label for="title">Enter title your expense</label>
             <input
@@ -52,12 +52,10 @@
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button type="button" id="save-expenses-btn" class="form__save-expenses-btn btn btn-secondary">
-            Save expenses
-          </button>
-          <button type="button" class="form__add-expense-btn btn btn-danger">
+          <button type="submit" class="form__add-expense-btn btn btn-danger">
             Add expense
           </button>
+          <!-- ??? -->
         </form>
       </div>
       <%- include('../includes/alert-message.ejs') %>

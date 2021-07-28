@@ -33,23 +33,18 @@ label {
 }
 
 .form__update-budget-btn,
-.form__add-expense-btn,
-.form__save-expenses-btn {
+.form__add-expense-btn {
   margin: 20px 0 0;
   position: relative;
   left: 95%;
   transform: translateX(-100%);
-  width: 134px;
 }
 
-.form__add-expense-btn,
-.form__save-expenses-btn {
-  transform: translateX(-198%);
-}
-
-.form__save-expenses-btn {
-  left: 93%;
-  visibility: hidden;
+@media (min-width: 992px) {
+  .form__update-budget-btn,
+  .form__add-expense-btn {
+    width: 134px;
+  }
 }
 
 @media (min-width: 992px) {

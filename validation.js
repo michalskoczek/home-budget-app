@@ -33,7 +33,7 @@ const budgetValidation = (data) => {
 const expenseValidation = (data) => {
   const schema = Joi.object({
     title: Joi.string(),
-    expense: Joi.number().greater(0).positive().required(),
+    amount: Joi.number().greater(0).positive().required(),
     _csrf: Joi.string(),
   });
 
