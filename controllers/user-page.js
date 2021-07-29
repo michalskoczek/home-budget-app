@@ -31,14 +31,23 @@ exports.getBudgetExpense = async (req, res) => {
     userId: req.session.userId,
   });
 
-  console.log(expense[0]);
+  let sumOfExpenses = 0;
+  if (expense.length !== 0) {
+    let expensesAmounts = expense.map((element) => {
+      return element.amount;
+    });
+    sumOfExpenses = expensesAmounts.reduce((previousValue, currentValue) => {
+      return previousValue + currentValue;
+    });
+  }
 
   if (budgetAmount.length !== 0) {
     res.render('user/user-page', {
       pageTitle: 'Home Budget App',
       path: '/user',
       userBudget: budgetAmount[budgetAmount.length - 1].amount,
-      userExpense: expense[expense.length - 1].amount,
+      userExpense: expense,
+      sumOfUserExpenses: sumOfExpenses ? sumOfExpenses : null,
       userName: req.session.userName,
       errorMessageFlash: messagesFlash.errorMessage,
       successfulMessageFlash: messagesFlash.successfulMessage,
@@ -49,6 +58,7 @@ exports.getBudgetExpense = async (req, res) => {
       path: '/user',
       userBudget: null,
       userExpense: null,
+      sumOfUserExpenses: null,
       userName: req.session.userName,
       errorMessageFlash: messagesFlash.errorMessage,
       successfulMessageFlash: messagesFlash.successfulMessage,
