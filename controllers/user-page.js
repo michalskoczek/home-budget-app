@@ -30,8 +30,13 @@ exports.getBudgetExpense = async (req, res) => {
   const expense = await Expense.find({
     userId: req.session.userId,
   });
+  let lastBudgetAmount = null;
+  if (budgetAmount.length !== 0) {
+    lastBudgetAmount = budgetAmount[budgetAmount.length - 1].amount;
+  }
 
   let sumOfExpenses = 0;
+  let userBalance = 0;
   if (expense.length !== 0) {
     let expensesAmounts = expense.map((element) => {
       return element.amount;
