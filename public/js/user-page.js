@@ -42,12 +42,12 @@ addExpenseBtn.addEventListener('click', (e) => {
     Number(expenseAmountInput.value),
   );
 
-  expense.updateExpense(expenseInfoSpan);
-  expense.updateBalance(
-    balanceInfoSpan,
-    Number(budgetInfoSpan.textContent),
-    Number(expenseInfoSpan.textContent),
-  );
+  // expense.updateExpense(expenseInfoSpan);
+  // expense.updateBalance(
+  //   balanceInfoSpan,
+  //   Number(budgetInfoSpan.textContent),
+  //   Number(expenseInfoSpan.textContent),
+  // );
 
   //expense.addExpenseToTable();
   document.querySelector('#form-expense').submit();
