@@ -32,7 +32,7 @@ class Expense {
   }
 
   updateBalance(showBalance, budget, expense) {
-    if (typeof budget === 'undefined') {
+    if (budget.textContent === '---') {
       showBalance.innerText = 'Fill your budget';
     } else {
       showBalance.innerText = budget - expense;
