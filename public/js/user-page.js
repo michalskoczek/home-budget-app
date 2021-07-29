@@ -49,7 +49,7 @@ addExpenseBtn.addEventListener('click', (e) => {
     Number(expenseInfoSpan.textContent),
   );
 
-  expense.addExpenseToTable();
+  //expense.addExpenseToTable();
   document.querySelector('#form-expense').submit();
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';

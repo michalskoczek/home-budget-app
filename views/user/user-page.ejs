@@ -55,7 +55,6 @@
           <button type="submit" class="form__add-expense-btn btn btn-danger">
             Add expense
           </button>
-          <!-- ??? -->
         </form>
       </div>
       <%- include('../includes/alert-message.ejs') %>
@@ -72,16 +71,14 @@
           <p class="information__title col">Balance</p>
         </div>
         <div class="row">
-          <span class="information__amount information__amount--budget col"><%= userBudget ? userBudget : '---'%></span>
-          <span class="information__amount information__amount--expense col"><%= userExpense ? userExpense : '---'%></span>       
+          <span class="information__amount information__amount--budget col"><%= userBudget ? userBudget : '---' %></span>
+          <span class="information__amount information__amount--expense col"><%= sumOfUserExpenses ? sumOfUserExpenses : '---' %></span>       
           <span class="information__amount information__amount--balance col">---</span>
         </div>
       </section>
       
       <div class="table col-lg-6 order-lg-12">
-        <table class="table table-striped">
-          <tbody></tbody>
-        </table>
+        <%- include('../includes/expenses-table.ejs') %>
       </div>
       <% } %>
     </div>

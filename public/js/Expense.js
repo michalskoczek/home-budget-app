@@ -90,7 +90,7 @@ class Expense {
       expense.updateExpense(expenseInfoSpan);
       expense.updateBalance(
         balanceInfoSpan,
-        budget.budgetAmounts[budget.budgetAmounts.length - 1],
+        Number(budgetInfoSpan.textContent),
         Number(expenseInfoSpan.textContent),
       );
 
