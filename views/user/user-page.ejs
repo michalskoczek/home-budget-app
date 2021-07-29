@@ -73,10 +73,10 @@
         <div class="row">
           <span class="information__amount information__amount--budget col"><%= userBudget ? userBudget : '---' %></span>
           <span class="information__amount information__amount--expense col"><%= sumOfUserExpenses ? sumOfUserExpenses : '---' %></span>       
-          <span class="information__amount information__amount--balance col">---</span>
+          <span class="information__amount information__amount--balance col"><%= userBalance ? userBalance : '---' %></span>
         </div>
       </section>
-      
+
       <div class="table col-lg-6 order-lg-12">
         <%- include('../includes/expenses-table.ejs') %>
       </div>

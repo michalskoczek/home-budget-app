@@ -30,8 +30,13 @@ exports.getBudgetExpense = async (req, res) => {
   const expense = await Expense.find({
     userId: req.session.userId,
   });
+  let lastBudgetAmount = null;
+  if (budgetAmount.length !== 0) {
+    lastBudgetAmount = budgetAmount[budgetAmount.length - 1].amount;
+  }
 
   let sumOfExpenses = 0;
+  let userBalance = 0;
   if (expense.length !== 0) {
     let expensesAmounts = expense.map((element) => {
       return element.amount;
@@ -39,15 +44,17 @@ exports.getBudgetExpense = async (req, res) => {
     sumOfExpenses = expensesAmounts.reduce((previousValue, currentValue) => {
       return previousValue + currentValue;
     });
+    userBalance = lastBudgetAmount - sumOfExpenses;
   }
 
-  if (budgetAmount.length !== 0) {
+  if (budgetAmount.length !== 0 || expense.length !== 0) {
     res.render('user/user-page', {
       pageTitle: 'Home Budget App',
       path: '/user',
-      userBudget: budgetAmount[budgetAmount.length - 1].amount,
+      userBudget: lastBudgetAmount,
       userExpense: expense,
       sumOfUserExpenses: sumOfExpenses ? sumOfExpenses : null,
+      userBalance: lastBudgetAmount ? userBalance : 'Fill your budget',
       userName: req.session.userName,
       errorMessageFlash: messagesFlash.errorMessage,
       successfulMessageFlash: messagesFlash.successfulMessage,
@@ -59,6 +66,7 @@ exports.getBudgetExpense = async (req, res) => {
       userBudget: null,
       userExpense: null,
       sumOfUserExpenses: null,
+      userBalance: null,
       userName: req.session.userName,
       errorMessageFlash: messagesFlash.errorMessage,
       successfulMessageFlash: messagesFlash.successfulMessage,
