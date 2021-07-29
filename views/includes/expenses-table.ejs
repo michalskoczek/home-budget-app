@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <% if(userExpense.length !== 0) { %>
+  <tbody>
+    <% for(let i = 0; i < userExpense.length; i++) { %>
+    <tr>
+      <th scope="row"><%= i + 1 %></th>
+      <td id="form-title-expense"><%= userExpense[i].title %></td>
+      <td id="form-amount-expense"><%= userExpense[i].amount %></td>
+      <td class="table__buttons">
+        <button type="button" id="edit">
+          <ion-icon class="table__icon text-success" name="create">
+        </button>
+        <button type="button" id="delete">
+          <ion-icon class="table__icon text-danger" name="trash">
+        </button>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+  <% } %>
+</table>
