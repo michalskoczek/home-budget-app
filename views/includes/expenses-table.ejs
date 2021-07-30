@@ -2,7 +2,7 @@
   <% if(userExpense) { %>
   <tbody>
     <% for(let i = 0; i < userExpense.length; i++) { %>
-    <tr>
+    <tr data-key="<%= i + 1 %>">
       <th scope="row"><%= i + 1 %></th>
       <td id="form-title-expense"><%= userExpense[i].title %></td>
       <td id="form-amount-expense"><%= userExpense[i].amount %></td>

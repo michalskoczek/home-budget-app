@@ -9,4 +9,6 @@ router.post('/:name', userController.postBudgetAmount);
 
 router.post('/:name/expense', userController.postExpense);
 
+router.post('/:name/expense/edit', userController.postEditExpense);
+
 module.exports = router;
