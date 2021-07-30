@@ -50,7 +50,49 @@ addExpenseBtn.addEventListener('click', (e) => {
   // );
 
   //expense.addExpenseToTable();
+  console.log('add expense submit');
   document.querySelector('#form-expense').submit();
   expenseTitleInput.value = '';
   expenseAmountInput.value = '';
+});
+
+const createButtonCorrectExpense = () => {
+  const buttonCorrectExpense = document.createElement('button');
+  buttonCorrectExpense.className = 'form__add-expense-btn btn btn-danger';
+  buttonCorrectExpense.id = 'update-expense';
+  buttonCorrectExpense.innerText = 'Update expense';
+  buttonCorrectExpense.setAttribute('type', 'button');
+  document.querySelector('#expenses form').appendChild(buttonCorrectExpense);
+};
+
+const editExpenseButton = [...document.querySelectorAll('#edit')];
+
+editExpenseButton.forEach((element, index) => {
+  element.addEventListener('click', () => {
+    console.log('edit click' + index);
+    addExpenseBtn.remove();
+    createButtonCorrectExpense();
+
+    const expensesTitlesArray = [
+      ...document.querySelectorAll('#form-title-expense'),
+    ];
+    const expensesAmountsArray = [
+      ...document.querySelectorAll('#form-amount-expense'),
+    ];
+
+    expenseTitleInput.value = expensesTitlesArray[index].textContent;
+    expenseAmountInput.value = expensesAmountsArray[index].textContent;
+
+    const urlPathname = window.location.pathname;
+    const urlUserName = urlPathname.slice(6);
+
+    document
+      .querySelector('#form-expense')
+      .setAttribute('action', `/user/${urlUserName}/expense/edit`);
+
+    const updateExpenseButton = document.querySelector('#update-expense');
+    updateExpenseButton.addEventListener('click', () => {
+      document.querySelector('#form-expense').submit();
+    });
+  });
 });
