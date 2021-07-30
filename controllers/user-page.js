@@ -120,3 +120,13 @@ exports.postExpense = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.postEditExpense = async (req, res) => {
+  const { error } = expenseValidation(req.body);
+  if (error) {
+    req.flash('errorMessage', error.details[0].message);
+    return res.redirect('/user/:name');
+  }
+
+  res.redirect('/user/:name');
+};
