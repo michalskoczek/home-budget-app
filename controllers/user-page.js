@@ -127,6 +127,16 @@ exports.postEditExpense = async (req, res) => {
     req.flash('errorMessage', error.details[0].message);
     return res.redirect('/user/:name');
   }
-
-  res.redirect('/user/:name');
+  try {
+    const expenseUpdated = await Expense.findOneAndUpdate(
+      { userId: req.session.userId },
+      { $set: { title: req.body.title, amount: req.body.expense } },
+    );
+    if (expenseUpdated) {
+      req.flash('successfulMessage', 'Expense is updated');
+      res.redirect('/user/:name');
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
