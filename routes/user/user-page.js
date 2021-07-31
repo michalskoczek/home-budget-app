@@ -11,4 +11,6 @@ router.post('/:name/expense', userController.postExpense);
 
 router.post('/:name/expense/edit', userController.postEditExpense);
 
+router.post('/:name/expense/delete', userController.postDeleteExpense);
+
 module.exports = router;
