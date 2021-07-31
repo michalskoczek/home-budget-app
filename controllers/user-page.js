@@ -129,7 +129,7 @@ exports.postEditExpense = async (req, res) => {
   }
   try {
     const expenseUpdated = await Expense.findOneAndUpdate(
-      { userId: req.session.userId },
+      { _id: req.query.expenseId },
       { $set: { title: req.body.title, amount: req.body.expense } },
     );
     if (expenseUpdated) {

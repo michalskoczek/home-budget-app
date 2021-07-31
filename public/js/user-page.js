@@ -86,9 +86,15 @@ editExpenseButton.forEach((element, index) => {
     const urlPathname = window.location.pathname;
     const urlUserName = urlPathname.slice(6);
 
+    const hiddenInputs = [...document.querySelectorAll('#expenseId')];
+    const expenseId = hiddenInputs[index].value;
+
     document
       .querySelector('#form-expense')
-      .setAttribute('action', `/user/${urlUserName}/expense/edit`);
+      .setAttribute(
+        'action',
+        `/user/${urlUserName}/expense/edit?expenseId=${expenseId}`,
+      );
 
     const updateExpenseButton = document.querySelector('#update-expense');
     updateExpenseButton.addEventListener('click', () => {
