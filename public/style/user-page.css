@@ -92,12 +92,17 @@ label {
 .table button {
   border: none;
   background: none;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 
 .table__buttons {
+  display: flex;
+  justify-content: flex-end;
   text-align: right;
-  width: 130px;
+}
+
+.table__buttons form {
+  max-width: 50px;
 }
 
 .alert-message {
