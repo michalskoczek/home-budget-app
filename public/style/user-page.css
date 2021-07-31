@@ -43,7 +43,7 @@ label {
 @media (min-width: 992px) {
   .form__update-budget-btn,
   .form__add-expense-btn {
-    width: 134px;
+    min-width: 134px;
   }
 }
 
