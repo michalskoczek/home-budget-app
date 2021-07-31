@@ -133,10 +133,23 @@ exports.postEditExpense = async (req, res) => {
       { $set: { title: req.body.title, amount: req.body.expense } },
     );
     if (expenseUpdated) {
-      req.flash('successfulMessage', 'Expense is updated');
       res.redirect('/user/:name');
     }
   } catch (err) {
     console.log(err);
+  }
+};
+
+exports.postDeleteExpense = async (req, res) => {
+  try {
+    const expenseDeleted = await Expense.findOneAndDelete({
+      _id: req.body.expenseId,
+    });
+    if (expenseDeleted) {
+      req.flash('successfulMessage', 'Expense is deleted');
+      res.redirect('/user/:name');
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
