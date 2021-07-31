@@ -10,9 +10,13 @@
         <button type="button" id="edit">
           <ion-icon class="table__icon text-success" name="create">
         </button>
-        <button type="button" id="delete">
-          <ion-icon class="table__icon text-danger" name="trash">
-        </button>
+        <form action="/user/<%= userName %>/expense/delete" method="POST">
+          <input type="hidden" name="expenseId" value="<%= userExpense[i]._id %>" >
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" id="delete">
+            <ion-icon class="table__icon text-danger" name="trash">
+          </button>
+        </form>
       </td>
     </tr>
     <% } %>
