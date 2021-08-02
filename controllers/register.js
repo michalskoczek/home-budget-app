@@ -62,6 +62,8 @@ exports.postRegisterForm = async (req, res) => {
     req.flash('successfulMessage', 'Your profile has just created!');
     res.redirect('../login/user');
   } catch (err) {
-    res.status(400).send(err);
+    const error = new Error(err);
+    error.httpStautsCode = 500;
+    return next(error);
   }
 };
