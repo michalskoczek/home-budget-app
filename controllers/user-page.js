@@ -93,7 +93,9 @@ exports.postBudgetAmount = async (req, res) => {
       res.redirect('/user/:name');
     }
   } catch (err) {
-    console.log(err);
+    const error = new Error(err);
+    error.httpStautsCode = 500;
+    return next(error);
   }
 };
 
@@ -117,7 +119,9 @@ exports.postExpense = async (req, res) => {
       res.redirect('/user/:name');
     }
   } catch (err) {
-    console.log(err);
+    const error = new Error(err);
+    error.httpStautsCode = 500;
+    return next(error);
   }
 };
 
@@ -136,7 +140,9 @@ exports.postEditExpense = async (req, res) => {
       res.redirect('/user/:name');
     }
   } catch (err) {
-    console.log(err);
+    const error = new Error(err);
+    error.httpStautsCode = 500;
+    return next(error);
   }
 };
 
@@ -149,7 +155,9 @@ exports.postDeleteExpense = async (req, res) => {
       req.flash('successfulMessage', 'Expense is deleted');
       res.redirect('/user/:name');
     }
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    const error = new Error(err);
+    error.httpStautsCode = 500;
+    return next(error);
   }
 };
