@@ -57,6 +57,12 @@ app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/user', userPageRouter);
 
+app.get('/500', errorController.getError500Page);
+
 app.use(errorController.getErrorPage);
+
+app.use((error, req, res, next) => {
+  res.redirect('/500');
+});
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
