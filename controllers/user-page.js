@@ -74,7 +74,7 @@ exports.getBudgetExpense = async (req, res) => {
   }
 };
 
-exports.postBudgetAmount = async (req, res) => {
+exports.postBudgetAmount = async (req, res, next) => {
   const { error } = budgetValidation(req.body);
   if (error) {
     req.flash('errorMessage', error.details[0].message);
@@ -99,7 +99,7 @@ exports.postBudgetAmount = async (req, res) => {
   }
 };
 
-exports.postExpense = async (req, res) => {
+exports.postExpense = async (req, res, next) => {
   const { error } = expenseValidation(req.body);
   if (error) {
     req.flash('errorMessage', error.details[0].message);
@@ -125,7 +125,7 @@ exports.postExpense = async (req, res) => {
   }
 };
 
-exports.postEditExpense = async (req, res) => {
+exports.postEditExpense = async (req, res, next) => {
   const { error } = expenseValidation(req.body);
   if (error) {
     req.flash('errorMessage', error.details[0].message);
@@ -146,7 +146,7 @@ exports.postEditExpense = async (req, res) => {
   }
 };
 
-exports.postDeleteExpense = async (req, res) => {
+exports.postDeleteExpense = async (req, res, next) => {
   try {
     const expenseDeleted = await Expense.findOneAndDelete({
       _id: req.body.expenseId,

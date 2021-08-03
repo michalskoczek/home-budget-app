@@ -29,7 +29,7 @@ exports.getRegisterHomepage = (req, res) => {
   });
 };
 
-exports.postRegisterForm = async (req, res) => {
+exports.postRegisterForm = async (req, res, next) => {
   const { error } = registerValidation(req.body);
   if (error) {
     req.flash('errorMessage', `${error.details[0].message}`);
