@@ -62,7 +62,12 @@ app.get('/500', errorController.getError500Page);
 app.use(errorController.getErrorPage);
 
 app.use((error, req, res, next) => {
-  res.redirect('/500');
+  res.status(500).render('error-500-page', {
+    errorPageTitle: 'Error | Home Budget App',
+    path: '/',
+    isLogged: req.session.isLogged,
+    userName: req.session.userName,
+  });
 });
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
