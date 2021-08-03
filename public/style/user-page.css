@@ -76,7 +76,9 @@ label {
 }
 
 .table {
+  max-height: 360px;
   margin: 15px 0 0;
+  overflow-y: auto;
 }
 
 @media (min-width: 992px) {
