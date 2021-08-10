@@ -45,6 +45,12 @@
   }
 }
 
+.container-height {
+  min-height: 100vh;
+  background: rgb(201,200,196);
+  background: linear-gradient(32deg, rgba(201,200,196,1) 0%, rgba(250,249,243,1) 100%);
+}
+
 .main__title-container {
   margin-top: 50px;
   font: 700 26px 'Montserrat', sans-serif;
