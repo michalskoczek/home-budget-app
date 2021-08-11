@@ -15,6 +15,7 @@
 
 label {
   font-weight: bold;
+  color: #f9faf9;
 }
 
 .form__container {
@@ -57,11 +58,17 @@ label {
 
 .information {
   margin: 20px 0 0;
+  background-color: #9ba2c1;
+  color: #f9faf9;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 @media (min-width: 992px) {
   .information {
-    margin: 35px 0 0;
+    margin: 35px 0 20px;
+    padding: 10px 0 5px;
   }
 }
 
@@ -79,6 +86,10 @@ label {
   max-height: 360px;
   margin: 15px 0 0;
   overflow-y: auto;
+  background-color: #f9faf9;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
 @media (min-width: 992px) {

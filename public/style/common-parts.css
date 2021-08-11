@@ -10,6 +10,14 @@
   }
 }
 
+nav {
+  background-color: #f9faf9;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
 .header__title {
   margin-top: 0.5rem;
   font: 400 20px 'Montserrat', sans-serif;
@@ -17,13 +25,13 @@
 }
 
 .header__link {
-  color: #000;
+  color: #395792;
   text-decoration: none;
   outline: none;
 }
 
 .header__link:hover {
-  color: #000;
+  color: #395792;
   text-decoration: none;
 }
 
@@ -47,30 +55,55 @@
 
 .container-height {
   min-height: 100vh;
-  background: rgb(201,200,196);
-  background: linear-gradient(32deg, rgba(201,200,196,1) 0%, rgba(250,249,243,1) 100%);
+  /* background: rgb(201,200,196);
+  background: linear-gradient(32deg, rgba(201,200,196,1) 0%, rgba(250,249,243,1) 100%); */
+  /* background: rgb(133, 204, 158);
+  background: linear-gradient(
+    32deg,
+    rgba(133, 204, 158, 1) 0%,
+    rgba(200, 234, 201, 1) 100%
+  ); */
+  background-color: #3a5792;
 }
 
 .main__title-container {
-  margin-top: 50px;
+  margin: 50px auto 20px;
   font: 700 26px 'Montserrat', sans-serif;
+  background-color: #2e426a;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
-@media (min-width: 768px) {
-  .main__title-container {
-    margin-left: -25%;
-  }
+.main__features {
+  color: #999999;
+  font: 400 16px 'Montserrat', sans-serif;
+  line-height: 1.5;
 }
 
 @media (min-width: 992px) {
   .main__title-container {
-    margin: 75px 0 0 -25%;
+    margin: 50px 0 0 -25%;
+    padding: 20px 160px;
+    font: 700 30px 'Montserrat', sans-serif;
+  }
+
+  .main__features {
+    font: 400 18px 'Montserrat', sans-serif;
+    line-height: 1.5;
   }
 }
 
 @media (min-width: 1400px) {
   .main__title-container {
-    margin: 75px 0 0 -20%;
+    margin: 60px 0 20px -20%;
+    font: 700 32px 'Montserrat', sans-serif;
+  }
+
+  .main__features {
+    line-height: 2;
   }
 }
 
