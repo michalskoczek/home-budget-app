@@ -15,8 +15,10 @@
 
 .form-container {
   padding: 15px 30px 110px;
-  border: 1px solid #888;
   border-radius: 10px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  background-color: #f9faf9;
 }
 
 .form__signin-btn {
@@ -29,6 +31,12 @@
   font: 400 18px 'Montserrat', sans-serif;
   letter-spacing: 0.5px;
   border-radius: 11px;
+  background-color: #64ab72;
+  color: white;
+}
+
+.form__signin-btn:hover {
+  color: white;
 }
 
 .form__input {
@@ -37,6 +45,7 @@
 
 label {
   font-weight: bold;
+  color: #395792;
 }
 
 .form__smallText {
