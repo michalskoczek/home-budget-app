@@ -14,6 +14,10 @@
   color: white;
 }
 
+.nav__item-link:hover {
+  color: white;
+}
+
 .nav__item-link.active {
   color: black;
 }
@@ -66,7 +70,7 @@ label {
   background-color: #fc2d1e;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   #expenses,
   #budget {
     background-color: white;
@@ -196,4 +200,20 @@ label {
     transform: translate(-50%, 0);
     z-index: 99;
   }
+}
+
+.table-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.table-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 10px;
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #9ba2c1;
 }
