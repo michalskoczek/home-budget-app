@@ -100,3 +100,53 @@
 .main__title {
   color: #f9faf9;
 }
+
+.carousel-cell__image-0 {
+  background: url('../images/house.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.carousel-cell__image-1 {
+  background: url('../images/mobile-register.png') center center no-repeat;
+  background-size: cover;
+}
+
+.carousel-cell__image-2 {
+  background: url('../images/mobile-user-page-1.png') center center no-repeat;
+  background-size: cover;
+}
+
+.carousel-cell__image-3 {
+  background: url('../images/mobile-user-page-expense.png') center center
+    no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 992px) {
+  .carousel-cell__image-0 {
+    background: url('../images/house.jpg') center center no-repeat;
+    background-size: contain;
+  }
+
+  .carousel-cell__image-1 {
+    background: url('../images/desktop-register.png') center center no-repeat;
+    background-size: contain;
+  }
+
+  .carousel-cell__image-2 {
+    background: url('../images/desktop_user-page-1.png') center center no-repeat;
+    background-size: contain;
+  }
+  .carousel-cell__image-3 {
+    background: url('../images/desktop_user-page.png') center center no-repeat;
+    background-size: contain;
+  }
+}
+
+.carousel__container {
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: #9ba2c1;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+}
