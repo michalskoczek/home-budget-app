@@ -11,11 +11,15 @@
   font: 400 16px 'Montserrat', sans-serif;
   height: 40px;
   vertical-align: middle;
+  color: white;
+}
+
+.nav__item-link.active {
+  color: black;
 }
 
 label {
   font-weight: bold;
-  color: #f9faf9;
 }
 
 .form__container {
@@ -26,6 +30,10 @@ label {
 @media (min-width: 992px) {
   .form__container {
     margin: 15px 0 0;
+  }
+
+  label {
+    color: #f9faf9;
   }
 }
 
@@ -39,6 +47,35 @@ label {
   position: relative;
   left: 95%;
   transform: translateX(-100%);
+  background-color: #64ab72;
+  border: none;
+  color: white;
+}
+
+.form__add-expense-btn {
+  background-color: #f44336;
+}
+
+.form__update-budget-btn:hover {
+  color: white;
+  background-color: #44a757;
+}
+
+.form__add-expense-btn:hover {
+  color: white;
+  background-color: #fc2d1e;
+}
+
+@media (max-width: 767px) {
+  #expenses,
+  #budget {
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+      0 1px 5px 0 rgb(0 0 0 / 12%);
+  }
 }
 
 @media (min-width: 992px) {
@@ -54,15 +91,24 @@ label {
     display: block;
     opacity: 1;
   }
+
+  #form-expense,
+  #form-budget {
+    background-color: #8bafdc;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+      0 1px 5px 0 rgb(0 0 0 / 12%);
+    padding-bottom: 10px;
+  }
 }
 
 .information {
   margin: 20px 0 0;
-  background-color: #9ba2c1;
-  color: #f9faf9;
+  background-color: #f9faf9;
   border-radius: 10px;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
     0 1px 5px 0 rgb(0 0 0 / 12%);
+  padding: 10px 0;
 }
 
 @media (min-width: 992px) {
@@ -86,6 +132,22 @@ label {
   max-height: 360px;
   margin: 15px 0 0;
   overflow-y: auto;
+}
+
+.table td,
+.table th {
+  border: none;
+}
+
+.table__head:nth-last-child(1) {
+  text-align: right;
+}
+
+.table__head {
+  color: #9ba2c1;
+}
+
+.table-bgc {
   background-color: #f9faf9;
   border-radius: 10px;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
@@ -95,6 +157,10 @@ label {
 @media (min-width: 992px) {
   .table {
     margin: 0;
+  }
+
+  .table-bgc {
+    padding: 10px;
   }
 }
 
