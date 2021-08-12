@@ -26,7 +26,7 @@
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button type="submit" class="form__update-budget-btn btn btn-success">
+          <button type="submit" class="form__update-budget-btn btn">
             Update budget
           </button>
         </form>
@@ -52,7 +52,7 @@
             />
           </div>
           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button type="submit" class="form__add-expense-btn btn btn-danger">
+          <button type="submit" class="form__add-expense-btn btn">
             Add expense
           </button>
         </form>
@@ -77,9 +77,9 @@
         </div>
       </section>
 
-      <div class="table col-lg-6 order-lg-12">
+     
         <%- include('../includes/expenses-table.ejs') %>
-      </div>
+      
       <% } %>
     </div>
   </div>
