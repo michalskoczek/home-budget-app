@@ -55,14 +55,6 @@ nav {
 
 .container-height {
   min-height: 100vh;
-  /* background: rgb(201,200,196);
-  background: linear-gradient(32deg, rgba(201,200,196,1) 0%, rgba(250,249,243,1) 100%); */
-  /* background: rgb(133, 204, 158);
-  background: linear-gradient(
-    32deg,
-    rgba(133, 204, 158, 1) 0%,
-    rgba(200, 234, 201, 1) 100%
-  ); */
   background-color: #3a5792;
 }
 
