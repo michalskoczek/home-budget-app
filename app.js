@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs');
+
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
@@ -6,6 +8,9 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
 
 const homepageRouter = require('./routes/homepage');
 const registerRouter = require('./routes/register');
@@ -28,6 +33,15 @@ const csrfProtection = csrf();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
+
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, 'access.log'),
+  { flags: 'a' },
+);
+
+app.use(helmet());
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(express.urlencoded({ extended: false }), express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -70,4 +84,4 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(PORT, console.log(`Server is running on port ${PORT}`));
+app.listen(PORT);
