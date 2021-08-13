@@ -1,37 +1,43 @@
-
-  <% if(userExpense.length > 0) { %>
- <div class="table col-lg-6 order-lg-12 table-bgc table-scrollbar">
- <table class="table table-striped">
-   <thead>
-    <tr>
-      <th scope="col" class="table__head">#</th>
-      <th scope="col" class="table__head">Expense Name</th>
-      <th scope="col" class="table__head">Value</th>
-      <th scope="col" class="table__head">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% for(let i = 0; i < userExpense.length; i++) { %>
-    <tr data-key="<%= i + 1 %>">
-      <th scope="row"><%= i + 1 %></th>
-      <td id="form-title-expense"><%= userExpense[i].title %></td>
-      <td id="form-amount-expense"><%= userExpense[i].amount %></td>
-      <td class="table__buttons">
-        <button type="button" id="edit">
-          <ion-icon class="table__icon text-success" name="create">
-        </button>
-        <form action="/user/<%= userName %>/expense/delete" method="POST">
-          <input type="hidden" name="expenseId" value="<%= userExpense[i]._id %>" id="expenseId">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-          <button type="submit" id="delete">
-            <ion-icon class="table__icon text-danger" name="trash">
+<% if(userExpense.length > 0) { %>
+<div class="table col-lg-6 order-lg-12 table-bgc table-scrollbar">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="table__head">#</th>
+        <th scope="col" class="table__head">Expense Name</th>
+        <th scope="col" class="table__head">Value</th>
+        <th scope="col" class="table__head">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i < userExpense.length; i++) { %>
+      <tr data-key="<%= i + 1 %>">
+        <th scope="row"><%= i + 1 %></th>
+        <td id="form-title-expense"><%= userExpense[i].title %></td>
+        <td id="form-amount-expense"><%= userExpense[i].amount %></td>
+        <td class="table__buttons">
+          <button type="button" id="edit">
+            <span class="material-icons table__icon text-success">edit</span>
           </button>
-        </form>
-      </td>
-    </tr>
-    <% } %>
-  </tbody>
-    </table>
-  </div>
+          <form action="/user/<%= userName %>/expense/delete" method="POST">
+            <input
+              type="hidden"
+              name="expenseId"
+              value="<%= userExpense[i]._id %>"
+              id="expenseId"
+            />
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button type="submit" id="delete">
+              <span class="material-icons table__icon text-danger">
+                delete</span
+              >
+            </button>
+          </form>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
 
-  <% } %>
+<% } %>
