@@ -1,5 +1,7 @@
 <%- include('../includes/head.ejs') %>
   <link rel="stylesheet" href="/style/user-page.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
    <%- include('../includes/nav.ejs') %>
     </header>
 <main>
@@ -60,9 +62,11 @@
       <% if(isLogged) { %>
       <section class="information container col-lg-6 order-lg-6">
         <div class="row">
-          <ion-icon class="information__icon text-success col" name="cash"></ion-icon>
-          <ion-icon class="information__icon text-danger col" name="basket"></ion-icon>
-          <ion-icon class="information__icon text-primary col" name="wallet"></ion-icon>
+          <span class="material-icons information__icon text-success col"> payments</span>
+          <span class="material-icons information__icon text-danger col">
+          shopping_basket</span>
+          <span class="material-icons information__icon text-primary col">
+          account_balance_wallet</span>
         </div>
         <div class="row">
           <p class="information__title col">Budget</p>
@@ -75,10 +79,7 @@
           <span class="information__amount information__amount--balance col"><%= userBalance ? userBalance : '---' %></span>
         </div>
       </section>
-
-     
         <%- include('../includes/expenses-table.ejs') %>
-      
       <% } %>
     </div>
   </div>
@@ -88,5 +89,4 @@
 <% } %>
 <%- include('../includes/scripts.ejs') %>
 <script src="/js/user-page.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <%- include('../includes/end.ejs') %>
